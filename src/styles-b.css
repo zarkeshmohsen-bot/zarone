@@ -1,0 +1,33 @@
+/* Direction B — stone and bronze (for comparison with A). Same layout as styles.css; colours and type from Fereshteh 58:
+   fluted grey stone #837a79, near-black bronze glass #1e1c19, limestone #f1eee9, planting green #56603f.
+   Display face: Vazirmatn 800 (Reem Kufi draws Persian ی and ک in Arabic forms, so it is used for the Latin wordmark only). */
+@import url("/styles.css");
+@font-face { font-family: "ReemKufiLatin"; src: url("/fonts/ReemKufi-Latin-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+
+:root {
+  --navy: #1e1c19; --navy-deep: #141210; --bronze: #56603f; --bronze-light: #c3b8a5;
+  --travertine: #f1eee9; --card: #ffffff; --line: #d9d3ca;
+  --ink: #1e1c19; --muted: #5f5a55; --on-navy: #f1eee9; --on-navy-muted: #c9c2b8;
+  --display: "Vazirmatn", sans-serif;
+}
+h1, h2, h3 { font-weight: 800; line-height: 1.35; letter-spacing: 0; }
+.wm-fa, .card-name, .svc, .principles .wrap, .card-typo { font-weight: 800; }
+.lead { color: #4f4a45; }
+.wm-fa { font-size: 2.3rem; }
+.wm-en { font-family: "ReemKufiLatin", sans-serif; font-weight: 500; letter-spacing: .42em; color: var(--ink); }
+.wm.small .wm-en { color: var(--bronze-light); }
+.wm:not(.large) { gap: 1rem; }
+.wm:not(.large) .wm-en { border-inline-start: 1px solid #837a79; padding-inline-start: 1rem; }
+.btn { border-radius: 0; }
+.rule { background: #837a79; height: 1px; width: 5rem; }
+.hero-photo img { filter: saturate(.85); }
+.band { background: var(--navy); }
+.svc { font-size: 1.55rem; }
+.card img, .card-typo { aspect-ratio: 3 / 4; }
+.card-name { font-size: 1.45rem; }
+.principles .wrap { font-size: clamp(1.4rem, 2.8vw, 1.8rem); gap: .6rem 2.2rem; }
+.principles .dot { color: #837a79; }
+nav a[aria-current] { box-shadow: inset 0 -1px 0 var(--ink); }
+.hold-photo { background: var(--navy); }
+.hold-photo img { filter: saturate(.85); }
+.hold-photo figcaption { background: rgba(20, 18, 16, .8); }

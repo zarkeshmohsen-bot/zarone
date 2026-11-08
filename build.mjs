@@ -10,7 +10,10 @@ const out = join(here, "dist");
 const site = JSON.parse(readFileSync(join(here, "content/site.json"), "utf8"));
 const projects = JSON.parse(readFileSync(join(here, "content/projects.json"), "utf8"));
 const origin = `https://${site.domain}`;
-const BASE = site.sitePublic ? "" : "/site";
+let BASE = site.sitePublic ? "" : "/site";
+let CSS = "/styles.css";
+let HOLD = "/";
+let HERO = site.hero.image;
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const fa = (n) => String(n).replace(/[0-9]/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
@@ -38,7 +41,7 @@ function head({ title, description, path, index }) {
 <meta name="theme-color" content="#0b1f3a">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/MarkaziText-Arabic-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="${CSS}">
 <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: site.nameFa, alternateName: site.nameEn, url: origin, telephone: site.contact.phone, sameAs: [site.contact.instagram], address: { "@type": "PostalAddress", streetAddress: site.contact.address, addressLocality: site.city, addressCountry: "IR" } })}</script>
 </head>`;
 }
@@ -78,6 +81,7 @@ function card(p) {
 </a>`;
 }
 
+function buildPages() {
 // ── full site ──
 const home = layout({
   title: `${site.nameFa} — ${site.hero.line}`,
@@ -93,7 +97,7 @@ const home = layout({
     <p class="lead">${esc(site.hero.text)}</p>
     <div class="actions"><a class="btn" href="${BASE}/projects/">پروژه‌ها را ببینید</a><a class="btn ghost" href="${BASE}/contact/">گفت‌وگو دربارهٔ پروژهٔ شما</a></div>
   </div>
-  <figure class="hero-photo"><img src="/images/${site.hero.image}" alt="${esc(site.hero.caption)}"><figcaption>${esc(site.hero.caption)}</figcaption></figure>
+  <figure class="hero-photo"><img src="/images/${HERO}" alt="${esc(site.hero.caption)}"><figcaption>${esc(site.hero.caption)}</figcaption></figure>
 </div></section>
 <section class="band" id="services"><div class="wrap services">
   ${site.services.map((s) => `<div><h2 class="svc">${esc(s.title)}</h2><p>${esc(s.text)}</p></div>`).join("")}
@@ -173,7 +177,7 @@ const contact = layout({
 });
 
 // ── holding page at / ──
-const holding = `${head({ title: `${site.nameFa} — ${site.holding.line}`, description: `${site.descriptor}. ${site.contact.address}.`, path: "/", index: true })}
+const holding = `${head({ title: `${site.nameFa} — ${site.holding.line}`, description: `${site.descriptor}. ${site.contact.address}.`, path: HOLD, index: HOLD === "/" })}
 <body class="holding">
 <main class="hold">
   <div class="hold-text">
@@ -189,23 +193,32 @@ const holding = `${head({ title: `${site.nameFa} — ${site.holding.line}`, desc
 </body>
 </html>`;
 
+
+return { home, projectsIndex, projectPages, about, contact, holding };
+}
+
 // ── write ──
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
 cpSync(join(here, "fonts"), join(out, "fonts"), { recursive: true });
 cpSync(join(here, "images"), join(out, "images"), { recursive: true });
 cpSync(join(here, "src/styles.css"), join(out, "styles.css"));
+cpSync(join(here, "src/styles-b.css"), join(out, "styles-b.css"));
 writeFileSync(join(out, "icon.svg"), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="28" fill="#0b1f3a"/><text x="64" y="88" text-anchor="middle" font-family="serif" font-weight="700" font-size="68" fill="#efe9df">ز</text><rect x="44" y="102" width="40" height="3" fill="#7a5f44"/></svg>`);
-const pages = [
-  ["index.html", holding],
-  [`${BASE.slice(1)}/index.html`.replace(/^\//, ""), home],
-  [`${BASE.slice(1)}/projects/index.html`.replace(/^\//, ""), projectsIndex],
-  [`${BASE.slice(1)}/about/index.html`.replace(/^\//, ""), about],
-  [`${BASE.slice(1)}/contact/index.html`.replace(/^\//, ""), contact],
-  ...projectPages.map(([slug, html]) => [`${BASE.slice(1)}/projects/${slug}/index.html`.replace(/^\//, ""), html]),
+const variants = [
+  { base: site.sitePublic ? "" : "/site", css: "/styles.css", hold: "/" },
+  { base: "/site-b", css: "/styles-b.css", hold: "/b/", hero: "projects/fereshteh-58/03-stone.webp" }, // direction B, for comparison (D-41)
 ];
-if (site.sitePublic) pages.shift(); // the full home replaces the holding page
+const pages = [];
+for (const v of variants) {
+  BASE = v.base; CSS = v.css; HOLD = v.hold; HERO = v.hero ?? site.hero.image;
+  const { home, projectsIndex, projectPages, about, contact, holding } = buildPages();
+  const at = (p) => `${BASE.slice(1)}/${p}`.replace(/^\//, "");
+  if (!(site.sitePublic && v.hold === "/")) pages.push([`${v.hold.slice(1)}index.html`, holding]);
+  pages.push([at("index.html"), home], [at("projects/index.html"), projectsIndex], [at("about/index.html"), about], [at("contact/index.html"), contact],
+    ...projectPages.map(([slug, html]) => [at(`projects/${slug}/index.html`), html]));
+}
 for (const [path, html] of pages) { mkdirSync(dirname(join(out, path)), { recursive: true }); writeFileSync(join(out, path), html); }
-writeFileSync(join(out, "robots.txt"), site.sitePublic ? `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n` : `User-agent: *\nAllow: /$\nDisallow: /site/\n`);
+writeFileSync(join(out, "robots.txt"), site.sitePublic ? `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n` : `User-agent: *\nAllow: /$\nDisallow: /site/\nDisallow: /site-b/\nDisallow: /b/\n`);
 writeFileSync(join(out, ".htaccess"), `Options -Indexes\nDirectoryIndex index.html\nAddDefaultCharset UTF-8\nAddType image/webp .webp\nAddType font/woff2 .woff2\n<IfModule mod_rewrite.c>\n  RewriteEngine On\n  RewriteCond %{HTTPS} off\n  RewriteCond %{REQUEST_URI} !^/\\.well-known/\n  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n  RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]\n  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]\n</IfModule>\n<IfModule mod_headers.c>\n  Header set X-Content-Type-Options "nosniff"\n  Header set Referrer-Policy "strict-origin-when-cross-origin"\n  <FilesMatch "\\.(html)$">\n    Header set Cache-Control "no-cache"\n  </FilesMatch>\n  <FilesMatch "\\.(woff2|svg|webp|css)$">\n    Header set Cache-Control "public, max-age=86400"\n  </FilesMatch>\n</IfModule>\nErrorDocument 404 /index.html\n`);
-console.log(`zarone: ${pages.length} pages, ${projects.length} projects, full site at ${BASE || "/"} (public=${site.sitePublic}) → dist/`);
+console.log(`zarone: ${pages.length} pages, ${projects.length} projects; A at ${variants[0].base || "/"}, B at /site-b (public=${site.sitePublic}) → dist/`);
