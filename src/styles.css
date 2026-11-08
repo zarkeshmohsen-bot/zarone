@@ -1,0 +1,125 @@
+/* zarone.ir — brand direction A (navy and travertine), shared with Sazban (Sazban docs/DECISIONS.md D-39).
+   Fonts OFL: Markazi Text (display), Vazirmatn (text), Cormorant Garamond (Latin wordmark), Amiri (Latin fallback). */
+@font-face { font-family: "Vazirmatn"; src: url("/fonts/Vazirmatn-Variable.woff2") format("woff2-variations"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Markazi"; src: url("/fonts/MarkaziText-Arabic-400.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: "Markazi"; src: url("/fonts/MarkaziText-Arabic-700.woff2") format("woff2"); font-weight: 700; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: "Amiri"; src: url("/fonts/Amiri-Latin-700.woff2") format("woff2"); font-weight: 700; font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Cormorant"; src: url("/fonts/CormorantGaramond-Latin-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+
+:root {
+  --navy: #0b1f3a; --navy-deep: #071527; --bronze: #7a5f44; --bronze-light: #c9ab7c;
+  --travertine: #efe9df; --card: #fbf8f3; --line: #ddd4c5;
+  --ink: #141a26; --muted: #5e6472; --on-navy: #efe9df; --on-navy-muted: #b9c2d0;
+  --display: "Markazi", "Amiri", "Vazirmatn", serif; --text: "Vazirmatn", system-ui, sans-serif;
+  --max: 75rem; --gutter: clamp(1rem, 4vw, 2rem);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--travertine); color: var(--ink); font-family: var(--text); font-size: 1.0625rem; line-height: 1.85; }
+a { color: var(--navy); text-decoration: none; }
+a:hover { color: var(--bronze); }
+img { max-width: 100%; height: auto; display: block; }
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.narrow { max-width: 46rem; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; margin: 0; line-height: 1.25; color: var(--navy); }
+p { margin: 0; }
+.eyebrow { color: var(--bronze); font-size: .875rem; font-weight: 600; margin-bottom: .5rem; }
+.rule { width: 3.5rem; height: 2px; background: var(--bronze); margin: 1.1rem 0 1.4rem; }
+.lead { color: #4a5160; max-width: 38rem; }
+.lead + .lead { margin-top: 1rem; }
+
+/* wordmark: Persian first, Latin small and spaced */
+.wm { display: inline-flex; align-items: baseline; gap: .8rem; }
+.wm-fa { font-family: var(--display); font-weight: 700; font-size: 2.6rem; line-height: 1; color: var(--navy); }
+.wm-en { font-family: "Cormorant", serif; font-weight: 600; font-size: .8rem; letter-spacing: .38em; color: var(--bronze); }
+.wm.small .wm-fa { font-size: 1.8rem; color: var(--on-navy); }
+.wm.small .wm-en { color: var(--bronze-light); }
+.wm.large { flex-direction: column; align-items: flex-start; gap: .35rem; }
+.wm.large .wm-fa { font-size: clamp(4.5rem, 12vw, 7.5rem); }
+.wm.large .wm-en { font-size: 1rem; letter-spacing: .5em; }
+
+/* header */
+.top { border-bottom: 1px solid var(--line); background: var(--travertine); }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; min-height: 4.5rem; }
+nav { display: flex; flex-wrap: wrap; }
+nav a { padding: .7rem .8rem; min-height: 2.75rem; display: inline-flex; align-items: center; font-size: .95rem; color: var(--ink); }
+nav a[aria-current] { color: var(--navy); font-weight: 700; box-shadow: inset 0 -2px 0 var(--bronze); }
+
+/* buttons */
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.6rem; }
+.btn { display: inline-flex; align-items: center; min-height: 3rem; padding: 0 1.6rem; background: var(--navy); color: var(--on-navy); border-radius: 4px; font-weight: 600; }
+.btn:hover { background: var(--navy-deep); color: var(--on-navy); }
+.btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--navy); }
+.btn.light { background: var(--travertine); color: var(--navy); }
+
+/* hero */
+section { padding: clamp(3rem, 7vw, 5rem) 0; }
+.hero { padding-top: clamp(2rem, 5vw, 3.5rem); }
+.hero-grid { display: flex; flex-wrap: wrap; gap: 2.5rem 3rem; align-items: center; }
+.hero-text { flex: 1 1 22rem; }
+.hero h1 { font-size: clamp(2.8rem, 6vw, 4.3rem); line-height: 1.15; }
+.hero-photo { flex: 1.35 1 28rem; margin: 0; }
+.hero-photo img { width: 100%; height: clamp(22rem, 52vw, 40rem); object-fit: cover; object-position: 50% 40%; }
+figcaption { font-size: .82rem; color: var(--muted); margin-top: .6rem; }
+
+/* navy band */
+.band { background: var(--navy); color: var(--on-navy); }
+.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 2rem; }
+.svc { color: var(--on-navy); font-size: 1.85rem; margin-bottom: .4rem; }
+.services p { color: var(--on-navy-muted); font-size: .97rem; }
+
+/* cards */
+h2 { font-size: clamp(2rem, 4vw, 2.75rem); }
+.page-title { font-size: clamp(2.4rem, 5vw, 3.4rem); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: 2rem 1.75rem; margin-top: 2rem; }
+.card { display: flex; flex-direction: column; gap: .55rem; color: var(--ink); }
+.card img, .card-typo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.card-typo { display: flex; align-items: flex-end; padding: 1.25rem; background: var(--navy); color: var(--on-navy); font-family: var(--display); font-size: 2rem; font-weight: 700; }
+.card-name { font-family: var(--display); font-weight: 700; font-size: 1.75rem; line-height: 1.2; color: var(--navy); }
+.card-meta { font-size: .88rem; color: var(--muted); }
+.card:hover .card-name { color: var(--bronze); }
+.more { margin-top: 1.5rem; }
+
+/* principles */
+.principles { border-top: 1px solid var(--line); }
+.principles .wrap { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .6rem 1.6rem; font-family: var(--display); font-size: clamp(1.7rem, 3.4vw, 2.2rem); color: var(--navy); }
+.principles .dot { color: var(--bronze); font-size: 1rem; }
+
+/* invitation */
+.cta { background: var(--navy); text-align: center; }
+.cta h2 { color: var(--on-navy); }
+.cta p { color: var(--on-navy-muted); max-width: 34rem; margin: 1rem auto 2rem; }
+
+/* project page */
+.project-head { padding-bottom: 2rem; }
+.project-cover { width: 100%; max-height: 44rem; object-fit: cover; }
+.project-body { display: grid; gap: 2.5rem; }
+@media (min-width: 60rem) { .project-body { grid-template-columns: 22rem 1fr; align-items: start; } }
+.facts { margin: 0; border-top: 1px solid var(--line); }
+.facts div { display: grid; gap: .15rem; padding: .85rem 0; border-bottom: 1px solid var(--line); }
+.facts dt { color: var(--muted); font-size: .85rem; }
+.facts dd { margin: 0; font-weight: 600; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: .9rem; }
+.gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+
+/* contact */
+.contact-list { display: grid; gap: .5rem; margin-top: 1.5rem; font-size: 1.05rem; }
+.contact-list a { font-weight: 600; min-height: 2.75rem; display: inline-flex; align-items: center; gap: .35em; }
+
+/* footer */
+footer { background: var(--navy-deep); color: var(--on-navy-muted); font-size: .9rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem 2rem; padding-block: 2rem; }
+.foot-id { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.25rem; }
+footer .links { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; }
+footer a { color: var(--on-navy); min-height: 2.75rem; display: inline-flex; align-items: center; gap: .35em; }
+footer a:hover { color: var(--bronze-light); }
+
+/* holding page */
+.hold { min-height: 100vh; min-height: 100dvh; display: flex; flex-wrap: wrap; }
+.hold-text { flex: 1 1 26rem; display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 6vw, 5rem); }
+.hold-desc { color: var(--muted); margin-top: 1rem; font-size: .95rem; }
+.hold h1 { font-size: clamp(2.2rem, 4.6vw, 3.4rem); }
+.hold .lead { margin-top: 1rem; }
+.hold-photo { flex: 1 1 24rem; margin: 0; position: relative; min-height: 22rem; background: var(--navy); }
+.hold-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hold-photo figcaption { position: absolute; inset-inline-start: 1rem; bottom: 1rem; margin: 0; padding: .35rem .75rem; background: rgba(7, 21, 39, .78); color: var(--on-navy); font-size: .8rem; }
