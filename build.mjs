@@ -204,10 +204,12 @@ cpSync(join(here, "fonts"), join(out, "fonts"), { recursive: true });
 cpSync(join(here, "images"), join(out, "images"), { recursive: true });
 cpSync(join(here, "src/styles.css"), join(out, "styles.css"));
 cpSync(join(here, "src/styles-b.css"), join(out, "styles-b.css"));
+cpSync(join(here, "src/styles-c.css"), join(out, "styles-c.css"));
 writeFileSync(join(out, "icon.svg"), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="28" fill="#0b1f3a"/><text x="64" y="88" text-anchor="middle" font-family="serif" font-weight="700" font-size="68" fill="#efe9df">ز</text><rect x="44" y="102" width="40" height="3" fill="#7a5f44"/></svg>`);
 const variants = [
   { base: site.sitePublic ? "" : "/site", css: "/styles.css", hold: "/" },
-  { base: "/site-b", css: "/styles-b.css", hold: "/b/", hero: "projects/fereshteh-58/03-stone.webp" }, // direction B, for comparison (D-41)
+  { base: "/site-b", css: "/styles-b.css", hold: "/b/", hero: "projects/fereshteh-58/03-stone.webp" },
+  { base: "/site-c", css: "/styles-c.css", hold: "/c/", hero: "projects/fereshteh-58/03-stone.webp" }, // navy + stone + bronze // direction B, for comparison (D-41)
 ];
 const pages = [];
 for (const v of variants) {
@@ -219,6 +221,6 @@ for (const v of variants) {
     ...projectPages.map(([slug, html]) => [at(`projects/${slug}/index.html`), html]));
 }
 for (const [path, html] of pages) { mkdirSync(dirname(join(out, path)), { recursive: true }); writeFileSync(join(out, path), html); }
-writeFileSync(join(out, "robots.txt"), site.sitePublic ? `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n` : `User-agent: *\nAllow: /$\nDisallow: /site/\nDisallow: /site-b/\nDisallow: /b/\n`);
+writeFileSync(join(out, "robots.txt"), site.sitePublic ? `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n` : `User-agent: *\nAllow: /$\nDisallow: /site/\nDisallow: /site-b/\nDisallow: /b/\nDisallow: /site-c/\nDisallow: /c/\n`);
 writeFileSync(join(out, ".htaccess"), `Options -Indexes\nDirectoryIndex index.html\nAddDefaultCharset UTF-8\nAddType image/webp .webp\nAddType font/woff2 .woff2\n<IfModule mod_rewrite.c>\n  RewriteEngine On\n  RewriteCond %{HTTPS} off\n  RewriteCond %{REQUEST_URI} !^/\\.well-known/\n  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n  RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]\n  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]\n</IfModule>\n<IfModule mod_headers.c>\n  Header set X-Content-Type-Options "nosniff"\n  Header set Referrer-Policy "strict-origin-when-cross-origin"\n  <FilesMatch "\\.(html)$">\n    Header set Cache-Control "no-cache"\n  </FilesMatch>\n  <FilesMatch "\\.(woff2|svg|webp|css)$">\n    Header set Cache-Control "public, max-age=86400"\n  </FilesMatch>\n</IfModule>\nErrorDocument 404 /index.html\n`);
-console.log(`zarone: ${pages.length} pages, ${projects.length} projects; A at ${variants[0].base || "/"}, B at /site-b (public=${site.sitePublic}) → dist/`);
+console.log(`zarone: ${pages.length} pages, ${projects.length} projects; A at ${variants[0].base || "/"}, B at /site-b, C at /site-c (public=${site.sitePublic}) → dist/`);

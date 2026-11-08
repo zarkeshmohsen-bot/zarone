@@ -1,0 +1,22 @@
+/* Direction C — navy with stone and bronze (owner asked 2026-11-08 to see the combination).
+   Navy #0b1f3a stays the primary (Sazban's colour); the ground is a cool limestone #eceae5 instead of travertine;
+   fluted stone #837a79 carries lines and secondary text; bronze #7a5f44 is the single accent. Markazi headings. */
+@import url("/styles.css");
+:root {
+  --travertine: #eceae5; --card: #f7f6f3; --line: #d3cfc8;
+  --muted: #5d5a57; --bronze: #7a5f44; --bronze-light: #c3b8a5;
+  --on-navy-muted: #b7bfcb;
+}
+.lead { color: #4b4a4c; }
+.rule { background: #837a79; height: 1px; width: 5rem; }
+.btn { border-radius: 0; }
+.btn.ghost { border-color: #837a79; }
+.eyebrow { color: var(--bronze); letter-spacing: .02em; }
+.top { border-bottom-color: #837a79; }
+.band { background: var(--navy); border-top: 3px solid #837a79; }
+.services > div { border-inline-start: 1px solid #39506f; padding-inline-start: 1.1rem; }
+.card img, .card-typo { aspect-ratio: 3 / 4; }
+.principles .dot { color: #837a79; }
+.cta { background: var(--navy); border-top: 3px solid #837a79; }
+footer { background: #0a1a30; }
+.hold-photo { background: #837a79; }
