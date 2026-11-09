@@ -42,13 +42,15 @@ function head({ title, description, path, index }) {
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/MarkaziText-Arabic-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${CSS}">
-<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: site.nameFa, alternateName: site.nameEn, url: origin, telephone: site.contact.phone, sameAs: [site.contact.instagram], address: { "@type": "PostalAddress", streetAddress: site.contact.address, addressLocality: site.city, addressCountry: "IR" } })}</script>
+<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: site.nameFa, alternateName: site.nameEn, url: origin, telephone: [site.contact.phone, site.contact.mobile], sameAs: [site.contact.instagram], address: { "@type": "PostalAddress", streetAddress: site.contact.address, addressLocality: site.city, addressCountry: "IR" } })}</script>
 </head>`;
 }
 
 const contactLines = () => [
-  `<a href="tel:${site.contact.phone}"><bdi dir="ltr">${esc(site.contact.phoneDisplay)}</bdi></a>`,
-  `<span>${esc(site.contact.address)}</span>`,
+  `<a href="tel:${site.contact.phone}">تلفن <bdi dir="ltr">${esc(site.contact.phoneDisplay)}</bdi></a>`,
+  `<a href="tel:${site.contact.mobile}">همراه <bdi dir="ltr">${esc(site.contact.mobileDisplay)}</bdi></a>`,
+  `<a href="${site.contact.whatsapp}" rel="noopener" target="_blank">واتس‌اپ</a>`,
+  `<span class="addr">${esc(site.contact.address)}</span>`,
   `<a href="${site.contact.instagram}" rel="me noopener" target="_blank">اینستاگرام <bdi dir="ltr">${esc(site.contact.instagramHandle)}</bdi></a>`,
 ];
 
@@ -66,7 +68,7 @@ ${body}
 </main>
 <footer><div class="wrap">
   <div class="foot-id">${wordmark("small")}<span>${esc(site.nameFa)} · ${esc(site.contact.address)}</span></div>
-  <div class="links">${contactLines().filter((_, i) => i !== 1).join("")}<a href="${site.sazban.url}" rel="noopener">${esc(site.sazban.label)}</a></div>
+  <div class="links">${contactLines().filter((l) => !l.includes('class="addr"')).join("")}<a href="${site.sazban.url}" rel="noopener">${esc(site.sazban.label)}</a></div>
 </div></footer>
 </body>
 </html>`;
