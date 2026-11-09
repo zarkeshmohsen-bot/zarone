@@ -29,7 +29,7 @@ cp -a dist/. "$DOCROOT/"
 cp "$SRC/.built-files" "$MANIFEST"
 # Purge the host cache (InMotion UltraStack NGINX ignores Cache-Control) for every name this folder serves, then check
 # each one answers with Zarone's own page — never another site on the account (incident 2026-11-09, zarone.sazban.com).
-for h in ${ZARONE_HOSTS:-zarone.sazban.com zarone.ir}; do
+for h in ${ZARONE_HOSTS:-zarone.sazban.com}; do  # add zarone.ir once it is hosted here
   curl -sk -A 'Mozilla/5.0' -o /dev/null "https://$h/purge/" || true
   t="$(curl -sk -A 'Mozilla/5.0' --max-time 15 "https://$h/" | grep -o '<title>[^<]*' | head -1)"
   case "$t" in *زروان*) echo "ok $h";; "") echo "skip $h (not reachable)";; *) echo "WRONG SITE on $h: ${t#<title>}";; esac
