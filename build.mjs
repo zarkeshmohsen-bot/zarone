@@ -1,228 +1,53 @@
-// zarone.ir — static build, no dependencies. node build.mjs → dist/
-//   /        holding page (live while the full site is reviewed)
-//   /site/   the full site, noindex until site.json "sitePublic" is true; then it moves to / (set BASE below to "")
-import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const here = dirname(fileURLToPath(import.meta.url));
-const out = join(here, "dist");
-const site = JSON.parse(readFileSync(join(here, "content/site.json"), "utf8"));
-const projects = JSON.parse(readFileSync(join(here, "content/projects.json"), "utf8"));
-const origin = `https://${site.domain}`;
-let BASE = site.sitePublic ? "" : "/site";
-let CSS = "/styles.css";
-let HOLD = "/";
-let HERO = site.hero.image;
-
-const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-const fa = (n) => String(n).replace(/[0-9]/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
-
-function photosOf(slug) {
-  const dir = join(here, "images/projects", slug);
-  if (!existsSync(dir)) return [];
-  return readdirSync(dir).filter((f) => /\.(jpe?g|png|webp|avif)$/i.test(f)).sort().map((f) => `/images/projects/${slug}/${f}`);
+// Zarone: dependency-free static pages. All public facts remain in content/.
+import {cpSync,existsSync,mkdirSync,readdirSync,readFileSync,rmSync,writeFileSync} from 'node:fs';
+import {dirname,join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=dirname(fileURLToPath(import.meta.url)), out=join(root,'dist');
+const site=JSON.parse(readFileSync(join(root,'content/site.json'),'utf8'));
+const projects=JSON.parse(readFileSync(join(root,'content/projects.json'),'utf8'));
+const origin=`https://${site.domain}`;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fa=n=>String(n).replace(/[0-9]/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const photos=p=>readdirSync(join(root,'images/projects',p.slug)).filter(f=>/\.(webp|jpe?g|png|avif)$/i.test(f)).sort().map(f=>`/images/projects/${p.slug}/${f}`);
+const category=p=>p.use.includes('بازسازی')?'renovation':p.use==='مسکونی'?'residential':p.use==='ویلایی'?'villa':'work';
+const arrow='<span aria-hidden="true">↗</span>';
+const logo=(small=false)=>`<span class="identity${small?' small':''}"><img src="/images/zarone-original.jpg" alt="" width="54" height="54"><span><strong>${esc(site.wordmark)}</strong><bdi dir="ltr">ZARONE</bdi></span></span>`;
+let base='',css='/styles.css';
+function head(title,description,path,{index=false,image='/images/holding.webp',type='website',schema=null}={}){
+ const url=origin+path;
+ return `<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="robots" content="${index?'index,follow':'noindex,nofollow'}"><link rel="canonical" href="${url}"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${url}"><meta property="og:type" content="${type}"><meta property="og:locale" content="fa_IR"><meta property="og:site_name" content="${esc(site.nameFa)}"><meta property="og:image" content="${origin}${image}"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0b1f3a"><link rel="icon" href="/images/zarone-original.jpg" type="image/jpeg"><link rel="preload" href="/fonts/Vazirmatn-Variable.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="${css}"><script src="/site.js" defer></script><script type="application/ld+json">${JSON.stringify(schema??{'@context':'https://schema.org','@type':'Organization',name:site.nameFa,alternateName:site.nameEn,url:origin,logo:origin+'/images/zarone-original.jpg',telephone:[site.contact.phone,site.contact.mobile],sameAs:[site.contact.instagram],address:{'@type':'PostalAddress',streetAddress:site.contact.address,addressLocality:site.city,addressCountry:'IR'}}).replace(/</g,'\\u003c')}</script></head>`;
 }
-
-const wordmark = (cls = "") => `<span class="wm ${cls}"><span class="wm-fa">${esc(site.wordmark)}</span><span class="wm-en" dir="ltr">${esc(site.wordmarkLatin)}</span></span>`;
-
-function head({ title, description, path, index }) {
-  const url = `${origin}${path}`;
-  return `<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)}</title>
-<meta name="description" content="${esc(description)}">
-<meta name="robots" content="${index ? "index,follow" : "noindex,nofollow"}">
-<link rel="canonical" href="${url}">
-<meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${url}"><meta property="og:type" content="website"><meta property="og:locale" content="fa_IR"><meta property="og:site_name" content="${esc(site.nameFa)}"><meta property="og:image" content="${origin}/images/holding.webp">
-<meta name="theme-color" content="#0b1f3a">
-<link rel="icon" href="/icon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/MarkaziText-Arabic-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${CSS}">
-<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: site.nameFa, alternateName: site.nameEn, url: origin, telephone: [site.contact.phone, site.contact.mobile], sameAs: [site.contact.instagram], address: { "@type": "PostalAddress", streetAddress: site.contact.address, addressLocality: site.city, addressCountry: "IR" } })}</script>
-</head>`;
+const contacts=()=>`<a href="tel:${site.contact.phone}"><span>دفتر زروان</span><bdi dir="ltr">${esc(site.contact.phoneDisplay)}</bdi>${arrow}</a><a href="tel:${site.contact.mobile}"><span>تلفن همراه</span><bdi dir="ltr">${esc(site.contact.mobileDisplay)}</bdi>${arrow}</a><a href="${site.contact.whatsapp}" target="_blank" rel="noopener noreferrer"><span>گفت‌وگو در واتس‌اپ</span>${arrow}</a><a href="${site.contact.instagram}" target="_blank" rel="me noopener noreferrer"><span>اینستاگرام</span><bdi dir="ltr">@${esc(site.contact.instagramHandle)}</bdi>${arrow}</a>`;
+function layout(title,description,path,body,{current='',image,home=false}={}){
+ const nav=[[`${base}/projects/`,'پروژه‌ها'],[`${base}/#services`,'خدمات'],[`${base}/about/`,'دربارهٔ زروان'],[`${base}/contact/`,'تماس']].map(([href,text])=>`<a href="${href}"${href===current?' aria-current="page"':''}>${text}</a>`).join('');
+ return `${head(title,description,path,{index:site.sitePublic&&base==='',image})}<body class="${home?'home':''}"><a class="skip" href="#main">رفتن به محتوا</a><header class="top"><div class="wrap header-inner"><a class="brand" href="${base}/" aria-label="${esc(site.nameFa)}">${logo()}</a><nav aria-label="فهرست اصلی">${nav}</nav><a class="header-contact" href="${base}/contact/">پروژهٔ بعدی شما ${arrow}</a><button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="باز کردن فهرست"><span></span><span></span></button></div><nav id="mobile-nav" class="mobile-nav" aria-label="فهرست همراه" hidden>${nav}</nav></header><main id="main">${body}</main><footer><div class="wrap footer-grid"><div><a href="${base}/" aria-label="${esc(site.nameFa)}">${logo(true)}</a><p>${esc(site.descriptor)}</p></div><div><h2>با زروان در ارتباط باشید</h2><a href="tel:${site.contact.phone}"><bdi dir="ltr">${esc(site.contact.phoneDisplay)}</bdi></a><a href="${site.contact.instagram}" target="_blank" rel="noopener noreferrer"><bdi dir="ltr">@${esc(site.contact.instagramHandle)}</bdi> ${arrow}</a><p>${esc(site.contact.address)}</p></div><div class="footer-nav"><h2>زروان</h2>${nav}</div></div><div class="wrap footer-bottom"><span>${esc(site.nameFa)}</span><a href="${site.sazban.url}" target="_blank" rel="noopener noreferrer">${esc(site.sazban.label)} ${arrow}</a></div></footer></body></html>`;
 }
-
-const contactLines = () => [
-  `<a href="tel:${site.contact.phone}">تلفن <bdi dir="ltr">${esc(site.contact.phoneDisplay)}</bdi></a>`,
-  `<a href="tel:${site.contact.mobile}">همراه <bdi dir="ltr">${esc(site.contact.mobileDisplay)}</bdi></a>`,
-  `<a href="${site.contact.whatsapp}" rel="noopener" target="_blank">واتس‌اپ</a>`,
-  `<span class="addr">${esc(site.contact.address)}</span>`,
-  `<a href="${site.contact.instagram}" rel="me noopener" target="_blank">اینستاگرام <bdi dir="ltr">${esc(site.contact.instagramHandle)}</bdi></a>`,
-];
-
-function layout({ title, description, path, body, current }) {
-  const nav = [[`${BASE}/projects/`, "پروژه‌ها"], [`${BASE}/#services`, "خدمات"], [`${BASE}/about/`, "دربارهٔ زروان"], [`${BASE}/contact/`, "تماس"]]
-    .map(([href, label]) => `<a href="${href}"${href === current ? ' aria-current="page"' : ""}>${label}</a>`).join("");
-  return `${head({ title, description, path, index: site.sitePublic })}
-<body>
-<header class="top"><div class="wrap">
-  <a class="brand" href="${BASE}/" aria-label="${esc(site.nameFa)}">${wordmark()}</a>
-  <nav aria-label="اصلی">${nav}</nav>
-</div></header>
-<main>
-${body}
-</main>
-<footer><div class="wrap">
-  <div class="foot-id">${wordmark("small")}<span>${esc(site.nameFa)} · ${esc(site.contact.address)}</span></div>
-  <div class="links">${contactLines().filter((l) => !l.includes('class="addr"')).join("")}<a href="${site.sazban.url}" rel="noopener">${esc(site.sazban.label)}</a></div>
-</div></footer>
-</body>
-</html>`;
+const image=(src,alt,cls='',lazy=true)=>`<img src="${esc(src)}" alt="${esc(alt)}" class="${cls}" ${lazy?'loading="lazy"':'fetchpriority="high"'} decoding="async">`;
+function card(p,i=0){return `<a class="project-card" data-category="${category(p)}" href="${base}/projects/${p.slug}/"><div class="project-image">${image(photos(p)[0],p.name)}<span class="project-status">${esc(p.status)}</span><span class="project-open" aria-hidden="true">↗</span></div><div class="project-title"><h3>${esc(p.name)}</h3><span class="project-number" aria-hidden="true">${fa(String(i+1).padStart(2,'0'))}</span></div><p>${esc(p.use)}<span aria-hidden="true"> / </span>${esc(p.place)}</p></a>`;}
+const invitation=()=>`<section class="invitation"><div class="wrap invitation-grid"><div><p class="eyebrow">از یک گفت‌وگو آغاز می‌شود</p><h2>${esc(site.cta.title)}</h2></div><div><p>${esc(site.cta.text)}</p><a class="button light" href="${base}/contact/">${esc(site.cta.button)} ${arrow}</a></div></div></section>`;
+function pages(){
+ const home=layout(`${site.nameFa} — ${site.hero.line}`,site.hero.text,`${base}/`,`<section class="hero"><div class="hero-copy"><p class="eyebrow">${esc(site.nameFa)} <span aria-hidden="true">/</span> ${esc(site.city)}</p><h1>ساختن،<br>فراتر از معمول<span class="copper">.</span></h1><p class="hero-description">${esc(site.hero.text)}</p><a class="text-link" href="${base}/projects/">پروژه‌ها را ببینید ${arrow}</a><div class="hero-bottom"><span>معماری · ساخت · توسعه</span><a href="#selected" aria-label="دیدن پروژه‌های منتخب">↓</a></div></div><figure class="hero-photo">${image('/images/projects/symphony-park-residence/01-terraces.webp','سمفونی پارک رزیدنس، نمای ساخته‌شده در الهیه','',false)}<figcaption><span>سمفونی پارک رزیدنس</span><span>الهیه · ۱۳۹۸</span></figcaption></figure></section><section id="selected" class="selected"><div class="wrap"><div class="section-head"><div><p class="eyebrow">روایت زروان در ساختمان‌ها</p><h2>پروژه‌های منتخب</h2></div><a class="text-link" href="${base}/projects/">همهٔ پروژه‌ها ${arrow}</a></div><div class="selected-grid">${[projects[0],projects[1],projects[4],projects[3]].map(card).join('')}</div></div></section><section class="story"><div class="wrap story-grid"><div class="story-image">${image('/images/projects/symphony-park-residence/02-travertine.webp','جزئیات نمای تراورتن سمفونی پارک رزیدنس')}<span class="image-note">جزئیات نما · سمفونی پارک رزیدنس</span></div><div class="story-copy"><p class="eyebrow">دربارهٔ زروان</p><h2>ساختمانی که سال‌ها بعد هم<br>انتخاب درستی باشد.</h2><p>${esc(site.about.paragraphs[0])}</p><a class="text-link" href="${base}/about/">با زروان آشنا شوید ${arrow}</a></div></div></section><section id="services" class="services-section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">از زمین تا تحویل</p><h2>یک نگاه، در تمام مسیر</h2></div></div><div class="services">${site.services.map((s,i)=>`<article><span class="service-number" aria-hidden="true">${fa(String(i+1).padStart(2,'0'))}</span><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></article>`).join('')}</div></div></section><section class="principles"><div class="wrap">${site.principles.map(w=>`<span>${esc(w)}</span>`).join('<i aria-hidden="true"></i>')}</div></section>${invitation()}`,{home:true});
+ const archive=layout(`پروژه‌ها — ${site.nameFa}`,'پروژه‌های مسکونی، اداری، ویلایی و بازسازی گروه ساختمانی زروان.',`${base}/projects/`,`<section class="page-heading wrap"><p class="eyebrow">معماری، در مقیاس زندگی</p><h1>پروژه‌های زروان</h1><p class="lead">از خانه و محل کار تا فضاهای بازسازی‌شده؛ هر پروژه، پاسخی به مکان و شیوهٔ زندگی.</p></section><section class="archive wrap"><div class="filter-bar" role="group" aria-label="نوع پروژه"><button data-filter="all" aria-pressed="true">همهٔ پروژه‌ها</button><button data-filter="residential" aria-pressed="false">مسکونی</button><button data-filter="work" aria-pressed="false">اداری و تجاری</button><button data-filter="villa" aria-pressed="false">ویلایی</button><button data-filter="renovation" aria-pressed="false">بازسازی</button></div><p class="project-count" aria-live="polite">${fa(projects.length)} پروژه</p><div class="archive-grid">${projects.map(card).join('')}</div></section>${invitation()}`,{current:`${base}/projects/`});
+ const detail=projects.map((p,i)=>{const imgs=photos(p),next=projects[(i+1)%projects.length];return [p.slug,layout(`${p.name} — ${site.nameFa}`,p.summary,`${base}/projects/${p.slug}/`,`<section class="project-heading wrap"><a class="text-link" href="${base}/projects/">پروژه‌ها <span aria-hidden="true">←</span></a><div class="project-heading-grid"><h1>${esc(p.name)}</h1><div><p class="eyebrow">${esc(p.use)} · ${esc(p.place)}</p><p class="status">${esc(p.status)}</p></div></div></section><div class="wrap project-cover">${image(imgs[0],p.name,'',false)}</div><section class="wrap project-body"><div class="project-summary"><p class="eyebrow">دربارهٔ پروژه</p><h2>${esc(p.name)}</h2><p class="lead">${esc(p.summary)}</p><dl class="facts">${p.facts.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl></div><div class="gallery">${imgs.slice(1).map((src,j)=>`<button class="gallery-item" data-lightbox="${src}" data-caption="${esc(p.name)} — تصویر ${fa(j+2)}" aria-label="بزرگ‌نمایی تصویر ${fa(j+2)} ${esc(p.name)}">${image(src,`${p.name} — تصویر ${fa(j+2)}`)}<span aria-hidden="true">⤢</span></button>`).join('')}</div></section><section class="next-project wrap"><p class="eyebrow">پروژهٔ بعدی</p><a href="${base}/projects/${next.slug}/"><h2>${esc(next.name)}</h2>${arrow}</a></section><dialog class="lightbox" aria-label="تصاویر پروژه"><div class="lightbox-toolbar"><p id="lightbox-caption"></p><button data-close aria-label="بستن تصویر">×</button></div><img src="${imgs[0]}" alt=""><div class="lightbox-nav"><button data-previous aria-label="تصویر قبلی">→</button><span data-position aria-live="polite"></span><button data-next aria-label="تصویر بعدی">←</button></div></dialog>`,{current:`${base}/projects/`,image:imgs[0]})];});
+ const about=layout(`دربارهٔ زروان — ${site.nameFa}`,site.about.paragraphs[0],`${base}/about/`,`<section class="page-heading wrap"><p class="eyebrow">${esc(site.nameFa)}</p><h1>${esc(site.about.title)}</h1></section><section class="wrap about-grid"><div>${image('/images/projects/symphony-park-residence/03-entrance.webp','ورودی سمفونی پارک رزیدنس','about-photo',false)}</div><div class="about-copy"><h2>ساختن، از یک نگاه مشترک.</h2>${site.about.paragraphs.map(p=>`<p class="lead">${esc(p)}</p>`).join('')}<a class="text-link" href="${base}/projects/">پروژه‌های زروان ${arrow}</a></div></section><section class="principles"><div class="wrap">${site.principles.map(w=>`<span>${esc(w)}</span>`).join('<i aria-hidden="true"></i>')}</div></section>${invitation()}`,{current:`${base}/about/`});
+ const contact=layout(`تماس با زروان — ${site.nameFa}`,`دفتر زروان: ${site.contact.address}، تلفن ${site.contact.phoneDisplay}`,`${base}/contact/`,`<section class="page-heading wrap"><p class="eyebrow">از ایده تا ساختمان</p><h1>با زروان گفت‌وگو کنید.</h1></section><section class="wrap contact-grid"><div><p class="lead">${esc(site.cta.text)}</p><div class="contact-list">${contacts()}</div><div class="contact-address"><p class="eyebrow">نشانی دفتر</p><p>${esc(site.contact.address)}</p></div></div><figure class="contact-photo">${image('/images/projects/symphony-park-residence/03-entrance.webp','ورودی سمفونی پارک رزیدنس در خیابان افسر','',false)}<figcaption>سمفونی پارک رزیدنس · الهیه</figcaption></figure></section>`,{current:`${base}/contact/`});
+ return {home,archive,detail,about,contact};
 }
-
-function card(p) {
-  const cover = photosOf(p.slug)[0];
-  return `<a class="card" href="${BASE}/projects/${p.slug}/">
-  ${cover ? `<img src="${cover}" alt="${esc(p.name)}" loading="lazy">` : `<span class="card-typo">${esc(p.name)}</span>`}
-  <span class="card-name">${esc(p.name)}</span>
-  <span class="card-meta">${esc(p.use)} · ${esc(p.place)} · ${esc(p.status)}</span>
-</a>`;
-}
-
-function buildPages() {
-// ── full site ──
-const home = layout({
-  title: `${site.nameFa} — ${site.hero.line}`,
-  description: site.hero.text,
-  path: `${BASE}/`,
-  current: "",
-  body: `
-<section class="hero"><div class="wrap hero-grid">
-  <div class="hero-text">
-    <p class="eyebrow">${esc(site.nameFa)} · ${esc(site.city)}</p>
-    <h1>${esc(site.hero.line)}</h1>
-    <div class="rule"></div>
-    <p class="lead">${esc(site.hero.text)}</p>
-    <div class="actions"><a class="btn" href="${BASE}/projects/">پروژه‌ها را ببینید</a><a class="btn ghost" href="${BASE}/contact/">گفت‌وگو دربارهٔ پروژهٔ شما</a></div>
-  </div>
-  <figure class="hero-photo"><img src="/images/${HERO}" alt="${esc(site.hero.caption)}"><figcaption>${esc(site.hero.caption)}</figcaption></figure>
-</div></section>
-<section class="band" id="services"><div class="wrap services">
-  ${site.services.map((s) => `<div><h2 class="svc">${esc(s.title)}</h2><p>${esc(s.text)}</p></div>`).join("")}
-</div></section>
-<section><div class="wrap">
-  <p class="eyebrow">پروژه‌ها</p>
-  <h2>ساختمان‌هایی که می‌سازیم</h2>
-  <div class="cards">${projects.slice(0, 6).map(card).join("")}</div>
-  ${projects.length > 6 ? `<p class="more"><a href="${BASE}/projects/">همهٔ ${fa(projects.length)} پروژه</a></p>` : ""}
-</div></section>
-<section class="principles"><div class="wrap">${site.principles.map((w) => `<span>${esc(w)}</span>`).join('<span class="dot" aria-hidden="true">◆</span>')}</div></section>
-<section class="cta"><div class="wrap">
-  <h2>${esc(site.cta.title)}</h2>
-  <p>${esc(site.cta.text)}</p>
-  <a class="btn light" href="${BASE}/contact/">${esc(site.cta.button)}</a>
-</div></section>`,
-});
-
-const projectsIndex = layout({
-  title: `پروژه‌ها — ${site.nameFa}`,
-  description: `پروژه‌های ${site.nameFa}: مسکونی، اداری، ویلایی و بازسازی.`,
-  path: `${BASE}/projects/`,
-  current: `${BASE}/projects/`,
-  body: `<section><div class="wrap">
-  <p class="eyebrow">پروژه‌ها</p>
-  <h1 class="page-title">${fa(projects.length)} پروژه</h1>
-  <div class="cards">${projects.map(card).join("")}</div>
-</div></section>`,
-});
-
-const projectPages = projects.map((p) => {
-  const photos = photosOf(p.slug);
-  const [first, ...rest] = photos;
-  return [p.slug, layout({
-    title: `${p.name} — ${p.use}، ${p.place} — ${site.nameFa}`,
-    description: p.summary,
-    path: `${BASE}/projects/${p.slug}/`,
-    current: `${BASE}/projects/`,
-    body: `<section class="project-head"><div class="wrap">
-  <p class="eyebrow"><a href="${BASE}/projects/">پروژه‌ها</a> · ${esc(p.use)} · ${esc(p.place)}</p>
-  <h1 class="page-title">${esc(p.name)}</h1>
-  <p class="lead">${esc(p.summary)}</p>
-</div></section>
-${first ? `<div class="wrap"><img class="project-cover" src="${first}" alt="${esc(p.name)}"></div>` : ""}
-<section><div class="wrap project-body">
-  <dl class="facts">${p.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}<div><dt>وضعیت</dt><dd>${esc(p.status)}</dd></div></dl>
-  ${rest.length ? `<div class="gallery">${rest.map((src) => `<img src="${src}" alt="${esc(p.name)}" loading="lazy">`).join("")}</div>` : ""}
-</div></section>`,
-  })];
-});
-
-const about = layout({
-  title: `${site.about.title} — ${site.nameFa}`,
-  description: site.about.paragraphs[0],
-  path: `${BASE}/about/`,
-  current: `${BASE}/about/`,
-  body: `<section><div class="wrap narrow">
-  <p class="eyebrow">${esc(site.nameFa)}</p>
-  <h1 class="page-title">${esc(site.about.title)}</h1>
-  <div class="rule"></div>
-  ${site.about.paragraphs.map((t) => `<p class="lead">${esc(t)}</p>`).join("")}
-</div></section>`,
-});
-
-const contact = layout({
-  title: `تماس — ${site.nameFa}`,
-  description: `دفتر ${site.nameFa}: ${site.contact.address}، تلفن ${site.contact.phoneDisplay}.`,
-  path: `${BASE}/contact/`,
-  current: `${BASE}/contact/`,
-  body: `<section><div class="wrap narrow">
-  <p class="eyebrow">تماس</p>
-  <h1 class="page-title">با زروان گفت‌وگو کنید</h1>
-  <div class="rule"></div>
-  <p class="lead">${esc(site.cta.text)}</p>
-  <div class="contact-list">${contactLines().join("")}</div>
-</div></section>`,
-});
-
-// ── holding page at / ──
-const holding = `${head({ title: `${site.nameFa} — ${site.holding.line}`, description: `${site.descriptor}. ${site.contact.address}.`, path: HOLD, index: HOLD === "/" })}
-<body class="holding">
-<main class="hold">
-  <div class="hold-text">
-    ${wordmark("large")}
-    <p class="hold-desc">${esc(site.nameFa)} · ${esc(site.descriptor)}</p>
-    <div class="rule"></div>
-    <h1>${esc(site.holding.line)}</h1>
-    <p class="lead">${esc(site.holding.text)}</p>
-    <div class="contact-list">${contactLines().join("")}</div>
-  </div>
-  <figure class="hold-photo"><img src="/images/holding.webp" alt="سمفونی پارک رزیدنس، الهیه"><figcaption>سمفونی پارک رزیدنس · الهیه · ۱۳۹۸</figcaption></figure>
-</main>
-</body>
-</html>`;
-
-
-return { home, projectsIndex, projectPages, about, contact, holding };
-}
-
-// ── write ──
-rmSync(out, { recursive: true, force: true });
-mkdirSync(out, { recursive: true });
-cpSync(join(here, "fonts"), join(out, "fonts"), { recursive: true });
-cpSync(join(here, "images"), join(out, "images"), { recursive: true });
-cpSync(join(here, "src/styles.css"), join(out, "styles.css"));
-cpSync(join(here, "src/styles-b.css"), join(out, "styles-b.css"));
-cpSync(join(here, "src/styles-c.css"), join(out, "styles-c.css"));
-writeFileSync(join(out, "icon.svg"), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="28" fill="#0b1f3a"/><text x="64" y="88" text-anchor="middle" font-family="serif" font-weight="700" font-size="68" fill="#efe9df">ز</text><rect x="44" y="102" width="40" height="3" fill="#7a5f44"/></svg>`);
-const variants = [
-  { base: site.sitePublic ? "" : "/site", css: "/styles.css", hold: "/" },
-  { base: "/site-b", css: "/styles-b.css", hold: "/b/", hero: "projects/fereshteh-58/03-stone.webp" },
-  { base: "/site-c", css: "/styles-c.css", hold: "/c/", hero: "projects/fereshteh-58/03-stone.webp" }, // navy + stone + bronze // direction B, for comparison (D-41)
-];
-const pages = [];
-for (const v of variants) {
-  BASE = v.base; CSS = v.css; HOLD = v.hold; HERO = v.hero ?? site.hero.image;
-  const { home, projectsIndex, projectPages, about, contact, holding } = buildPages();
-  const at = (p) => `${BASE.slice(1)}/${p}`.replace(/^\//, "");
-  if (!(site.sitePublic && v.hold === "/")) pages.push([`${v.hold.slice(1)}index.html`, holding]);
-  pages.push([at("index.html"), home], [at("projects/index.html"), projectsIndex], [at("about/index.html"), about], [at("contact/index.html"), contact],
-    ...projectPages.map(([slug, html]) => [at(`projects/${slug}/index.html`), html]));
-}
-for (const [path, html] of pages) { mkdirSync(dirname(join(out, path)), { recursive: true }); writeFileSync(join(out, path), html); }
-writeFileSync(join(out, "robots.txt"), site.sitePublic ? `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n` : `User-agent: *\nAllow: /$\nDisallow: /site/\nDisallow: /site-b/\nDisallow: /b/\nDisallow: /site-c/\nDisallow: /c/\n`);
-writeFileSync(join(out, ".htaccess"), `Options -Indexes\nDirectoryIndex index.html\nAddDefaultCharset UTF-8\nAddType image/webp .webp\nAddType font/woff2 .woff2\n<IfModule mod_rewrite.c>\n  RewriteEngine On\n  RewriteCond %{HTTPS} off\n  RewriteCond %{REQUEST_URI} !^/\\.well-known/\n  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n  RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]\n  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]\n</IfModule>\n<IfModule mod_headers.c>\n  Header set X-Content-Type-Options "nosniff"\n  Header set Referrer-Policy "strict-origin-when-cross-origin"\n  <If "%{HTTP_HOST} !~ /^(www\\.)?zarone\\.ir$/">\n    Header set X-Robots-Tag "noindex, nofollow"\n  </If>\n  <FilesMatch "\\.(html)$">\n    Header set Cache-Control "no-cache"\n  </FilesMatch>\n  <FilesMatch "\\.(woff2|svg|webp|css)$">\n    Header set Cache-Control "public, max-age=86400"\n  </FilesMatch>\n</IfModule>\nErrorDocument 404 /index.html\n`);
-console.log(`zarone: ${pages.length} pages, ${projects.length} projects; A at ${variants[0].base || "/"}, B at /site-b, C at /site-c (public=${site.sitePublic}) → dist/`);
+function holding(){return `${head(`${site.nameFa} — ${site.holding.line}`,site.descriptor,'/',{index:true})}<body class="holding"><main class="hold"><div class="hold-text">${logo()}<p class="eyebrow">${esc(site.nameFa)}</p><h1>${esc(site.holding.line)}</h1><p class="lead">${esc(site.holding.text)}</p><div class="contact-list">${contacts()}</div><p>${esc(site.contact.address)}</p></div><figure class="hold-photo">${image('/images/holding.webp','سمفونی پارک رزیدنس، الهیه','',false)}<figcaption>سمفونی پارک رزیدنس · الهیه · ۱۳۹۸</figcaption></figure></main></body></html>`;}
+rmSync(out,{recursive:true,force:true});mkdirSync(out,{recursive:true});
+for(const dir of ['fonts','images'])cpSync(join(root,dir),join(out,dir),{recursive:true});
+for(const file of ['styles.css','styles-b.css','styles-c.css','site.js'])cpSync(join(root,'src',file),join(out,file));
+const write=(path,body)=>{mkdirSync(dirname(join(out,path)),{recursive:true});writeFileSync(join(out,path),body);};
+const variants=[{base:site.sitePublic?'':'/site',css:'/styles.css'},{base:'/site-b',css:'/styles-b.css'},{base:'/site-c',css:'/styles-c.css'}];
+for(const v of variants){base=v.base;css=v.css;const p=pages();const at=path=>`${base.slice(1)}/${path}`.replace(/^\//,'');write(at('index.html'),p.home);write(at('projects/index.html'),p.archive);write(at('about/index.html'),p.about);write(at('contact/index.html'),p.contact);for(const [slug,html]of p.detail)write(at(`projects/${slug}/index.html`),html);}
+base='';css='/styles.css';if(!site.sitePublic)write('index.html',holding());
+// Keep existing comparison holding URLs functional.
+for(const path of ['b','c'])write(`${path}/index.html`,holding().replace('href="/styles.css"',`href="/styles-${path}.css"`));
+const publicPaths=['/','/projects/','/about/','/contact/',...projects.map(p=>`/projects/${p.slug}/`)];
+write('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${(site.sitePublic?publicPaths:['/']).map(p=>`<url><loc>${origin}${p}</loc></url>`).join('')}</urlset>`);
+write('robots.txt',`User-agent: *\n${site.sitePublic?'Allow: /':'Allow: /$\nDisallow: /site/'}\nDisallow: /site-b/\nDisallow: /site-c/\nDisallow: /b/\nDisallow: /c/\nSitemap: ${origin}/sitemap.xml\n`);
+write('404.html',`${head(`صفحه پیدا نشد — ${site.nameFa}`,'صفحهٔ مورد نظر پیدا نشد.','/404.html')}<body><main class="wrap page-heading"><p class="eyebrow">${esc(site.nameFa)}</p><h1>صفحه پیدا نشد.</h1><a class="text-link" href="${site.sitePublic?'/':'/site/'}">بازگشت به صفحهٔ اصلی ${arrow}</a></main></body></html>`);
+write('.htaccess',`Options -Indexes\nDirectoryIndex index.html\nAddDefaultCharset UTF-8\nAddType image/webp .webp\nAddType font/woff2 .woff2\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteCond %{REQUEST_URI} !^/\\.well-known/\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\nRewriteCond %{HTTP_HOST} ^www\\.zarone\\.ir$ [NC]\nRewriteRule ^ https://zarone.ir%{REQUEST_URI} [L,R=301]\n</IfModule>\n<IfModule mod_headers.c>\nHeader set X-Content-Type-Options "nosniff"\nHeader set Referrer-Policy "strict-origin-when-cross-origin"\n<If "%{HTTP_HOST} !~ /^(www\\.)?zarone\\.ir$/">\nHeader set X-Robots-Tag "noindex, nofollow"\n</If>\n<FilesMatch "\\.(html|css|js)$">\nHeader set Cache-Control "no-cache"\n</FilesMatch>\n<FilesMatch "\\.(woff2|webp|jpg)$">\nHeader set Cache-Control "public, max-age=86400"\n</FilesMatch>\n</IfModule>\nErrorDocument 404 /404.html\n`);
+// An origin-visible release marker lets deployment checks identify the published build.
+write('release.json',JSON.stringify({version:'2026-11-11-instagram',sitePublic:site.sitePublic,projects:projects.length})+'\n');
+console.log(`Built ${variants.length} site variants, ${projects.length} projects; homepage ${site.sitePublic?'public':'holding'}, full design ${site.sitePublic?'/':'/site/'}`);
