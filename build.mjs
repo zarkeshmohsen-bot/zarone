@@ -131,7 +131,14 @@ const projectsIndex = layout({
   body: `<section><div class="wrap">
   <p class="eyebrow">پروژه‌ها</p>
   <h1 class="page-title">${fa(projects.length)} پروژه</h1>
-  <div class="cards">${projects.map(card).join("")}</div>
+  <form class="project-search" role="search" method="get" data-project-filter hidden>
+    <label for="project-query">جست‌وجو در پروژه‌ها</label>
+    <div class="project-search-field"><input id="project-query" name="q" type="search" maxlength="120" placeholder="نام پروژه، محله یا نوع ساختمان" autocomplete="off" enterkeyhint="search"><button type="submit" aria-label="جست‌وجو"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button><button type="button" data-clear-projects aria-label="پاک کردن جست‌وجو">×</button></div>
+  </form>
+  <p data-project-count role="status" hidden></p>
+  <p data-project-empty hidden>پروژه‌ای با این مشخصات پیدا نشد.</p>
+  <div class="cards" data-project-cards>${projects.map(p => card(p).replace('class="card"',`class="card" data-project-search="${esc([p.name,p.place,p.use,p.status].join(' '))}"`)).join("")}</div>
+  <script src="/project-filter.js" defer></script>
 </div></section>`,
 });
 
@@ -211,6 +218,7 @@ cpSync(join(here, "fonts"), join(out, "fonts"), { recursive: true });
 cpSync(join(here, "images"), join(out, "images"), { recursive: true });
 cpSync(join(here, "src/styles.css"), join(out, "styles.css"));
 cpSync(join(here, "src/navigation.js"), join(out, "navigation.js"));
+cpSync(join(here, "src/project-filter.js"), join(out, "project-filter.js"));
 cpSync(join(here, "src/styles-b.css"), join(out, "styles-b.css"));
 cpSync(join(here, "src/styles-c.css"), join(out, "styles-c.css"));
 writeFileSync(join(out, "icon.svg"), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="28" fill="#0b1f3a"/><text x="64" y="88" text-anchor="middle" font-family="serif" font-weight="700" font-size="68" fill="#efe9df">ز</text><rect x="44" y="102" width="40" height="3" fill="#7a5f44"/></svg>`);
