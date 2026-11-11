@@ -1,0 +1,21 @@
+{
+  "font": {
+    "family": "Vazirmatn",
+    "file": "Vazirmatn-Variable.woff2",
+    "fallback": "Tahoma, system-ui, sans-serif"
+  },
+  "colors": {
+    "navy": "#0b1f3a",
+    "navy-deep": "#071428",
+    "paper": "#f7f5f0",
+    "card": "#ffffff",
+    "line": "#e6e0d4",
+    "ink": "#1b2432",
+    "muted": "#5d6470",
+    "accent": "#b08d57",
+    "accent-ink": "#7a5f44",
+    "accent-light": "#c9b18d"
+  },
+  "logo": "/images/zarone-original.jpg",
+  "logoType": "image/jpeg"
+}

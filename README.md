@@ -16,7 +16,8 @@ Upload the **contents** of `dist/` to the domain's document root. The existing h
 - `/site-b/`, `/site-c/`, `/b/` and `/c/` remain available for the previous palette comparison links. Preview variants are not indexable.
 - After visual approval, set `sitePublic` in `content/site.json` to `true`, rebuild and publish. The full site then occupies `/`; its production URLs enter the sitemap.
 - Edit facts in `content/site.json` and `content/projects.json`. Photography remains in `images/projects/`; the Instagram profile's original logo is stored locally at `images/zarone-original.jpg`.
-- Fonts are served locally; OFL licences are in `fonts/`.
+- Typography is Vazirmatn throughout, served locally; OFL licences are in `fonts/`. Palette, typography and logo are centralized in `content/brand.json`.
+- About Us follows Sazban’s current family heritage and connects the separate work of Zarone, Sazban and Kimia Ceram Zarin; see [brand/content provenance](docs/BRAND_ALIGNMENT.md).
 
 ## Release and hosting status
 
