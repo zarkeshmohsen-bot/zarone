@@ -1,0 +1,33 @@
+name: Navigation check
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  navigation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node build.mjs
+      - run: node scripts/check-site.mjs
+      - name: Install browser verification tools only
+        run: npm install --no-save --package-lock=false playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - name: Verify mobile and desktop navigation
+        run: |
+          python3 -m http.server 4173 --directory dist > /tmp/zarone-navigation.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in $(seq 1 15); do if curl -fsS http://localhost:4173/site/ > /dev/null; then break; fi; sleep 1; done
+          node scripts/navigation.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Zarone-RTL-navigation
+          path: docs/rtl-navigation/
+          if-no-files-found: error

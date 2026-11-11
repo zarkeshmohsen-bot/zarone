@@ -60,9 +60,14 @@ function layout({ title, description, path, body, current }) {
   return `${head({ title, description, path, index: site.sitePublic })}
 <body>
 <header class="top"><div class="wrap">
+  <nav class="desktop-navigation" aria-label="اصلی">${nav}</nav>
+  <details class="mobile-navigation">
+    <summary aria-label="منو"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></summary>
+    <nav aria-label="اصلی">${nav}</nav>
+  </details>
   <a class="brand" href="${BASE}/" aria-label="${esc(site.nameFa)}">${wordmark()}</a>
-  <nav aria-label="اصلی">${nav}</nav>
 </div></header>
+<script src="/navigation.js" defer></script>
 <main>
 ${body}
 </main>
@@ -205,6 +210,7 @@ mkdirSync(out, { recursive: true });
 cpSync(join(here, "fonts"), join(out, "fonts"), { recursive: true });
 cpSync(join(here, "images"), join(out, "images"), { recursive: true });
 cpSync(join(here, "src/styles.css"), join(out, "styles.css"));
+cpSync(join(here, "src/navigation.js"), join(out, "navigation.js"));
 cpSync(join(here, "src/styles-b.css"), join(out, "styles-b.css"));
 cpSync(join(here, "src/styles-c.css"), join(out, "styles-c.css"));
 writeFileSync(join(out, "icon.svg"), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="28" fill="#0b1f3a"/><text x="64" y="88" text-anchor="middle" font-family="serif" font-weight="700" font-size="68" fill="#efe9df">ز</text><rect x="44" y="102" width="40" height="3" fill="#7a5f44"/></svg>`);
@@ -226,3 +232,4 @@ for (const [path, html] of pages) { mkdirSync(dirname(join(out, path)), { recurs
 writeFileSync(join(out, "robots.txt"), site.sitePublic ? `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n` : `User-agent: *\nAllow: /$\nDisallow: /site/\nDisallow: /site-b/\nDisallow: /b/\nDisallow: /site-c/\nDisallow: /c/\n`);
 writeFileSync(join(out, ".htaccess"), `Options -Indexes\nDirectoryIndex index.html\nAddDefaultCharset UTF-8\nAddType image/webp .webp\nAddType font/woff2 .woff2\n<IfModule mod_rewrite.c>\n  RewriteEngine On\n  RewriteCond %{HTTPS} off\n  RewriteCond %{REQUEST_URI} !^/\\.well-known/\n  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n  RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]\n  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]\n</IfModule>\n<IfModule mod_headers.c>\n  Header set X-Content-Type-Options "nosniff"\n  Header set Referrer-Policy "strict-origin-when-cross-origin"\n  <If "%{HTTP_HOST} !~ /^(www\\.)?zarone\\.ir$/">\n    Header set X-Robots-Tag "noindex, nofollow"\n  </If>\n  <FilesMatch "\\.(html)$">\n    Header set Cache-Control "no-cache"\n  </FilesMatch>\n  <FilesMatch "\\.(woff2|svg|webp|css)$">\n    Header set Cache-Control "public, max-age=86400"\n  </FilesMatch>\n</IfModule>\nErrorDocument 404 /index.html\n`);
 console.log(`zarone: ${pages.length} pages, ${projects.length} projects; A at ${variants[0].base || "/"}, B at /site-b, C at /site-c (public=${site.sitePublic}) → dist/`);
+

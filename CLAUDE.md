@@ -8,3 +8,9 @@ public record shows it. Persian on screen; Latin in `<bdi dir="ltr">`. Phone fir
 Owner gates: public copy, photos, contact details and anything moving from `/site/` to `/` need his yes on a picture.
 Build: `node build.mjs`; check pictures at 390×844 and 1366×860 with zero console errors before pushing to `main`
 (a push is live within 10 minutes).
+
+## Navigation direction
+Persian navigation starts at the right (RTL): the mobile menu trigger and any side drawer belong on the right.
+Use document direction and logical CSS properties; do not double-reverse flex rows. Keep English navigation LTR.
+Check 320px and 390px phones, tablet and desktop, including keyboard dismissal, visible focus and 44px touch targets.
+Reference: https://www.w3.org/International/quicktips/#rtl
