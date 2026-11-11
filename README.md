@@ -13,7 +13,7 @@ Website of گروه ساختمانی زروان (ZarOne Development Group). Stat
 
 ## Publishing
 The hosting account pulls this public repo every 10 minutes (`deploy/publish.sh`, cron) and copies `dist/` to
-`~/zarone.ir`. A push to `main` is live within 10 minutes. No keys are stored here or in GitHub.
+`~/zarone.ir`. This schedule is documented but unverified. On 11 November 2026, the RTL fix was merged and tested, while the hosted preview still served the older header and zarone.ir was unreachable from the review browser. A push alone is not proof of deployment; verify hosting publication and the actual domain before claiming the change is live. No keys are stored here or in GitHub.
 
 ## Rules
 Same as Sazban's CLAUDE.md where they apply: Persian on screen, Latin in `<bdi>`, no claim without a source the owner
