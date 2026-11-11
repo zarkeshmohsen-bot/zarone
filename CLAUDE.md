@@ -20,3 +20,10 @@ The RTL menu fix is merged and browser-tested. The hosted preview at https://zar
 the older header after merge, including a fresh query-string request. https://zarone.ir/site/ was unreachable
 from the review browser. The documented ten-minute host publisher has not been verified; do not claim a GitHub
 push is live. Hosting access and domain/delegation verification are still needed. Preserve sitePublic=false.
+
+## Search and control usability
+- Keep a usable visible desktop text field. On phones use a full-width row or a named 44 px trigger, not a squeezed decorative field. Input text is at least 16 px.
+- A clickable-looking magnifier submits or opens search. Provide Enter/click, clear, Escape and correct focus return. Shortcuts do not interrupt typing in other fields.
+- Scope suggestion keyboard events to the input. Associate listbox/option IDs, keep active options visible and announce result/no-result status. Preserve current language routing and server permissions.
+- Normalize harmless spelling forms without changing public labels or inventing results. Show complete results or disclose truncation. Private CRM/customer records are never indexed by public search.
+- Verify 320/390/768/1024 and desktop widths, RTL/LTR where supported, touch targets, overflow, focus and reduced motion. No new browser trackers/providers are implied.
