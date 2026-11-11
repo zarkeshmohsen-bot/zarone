@@ -1,21 +1,26 @@
 # zarone.ir
 
-Website of گروه ساختمانی زروان (ZarOne Development Group). Static, no dependencies: `node build.mjs` → `dist/`.
+Persian, RTL portfolio for گروه ساختمانی زروان (ZarOne Development Group). Node 20+; no packages, tracking services or third-party asset requests are needed at runtime.
 
-- `/` — holding page (live).
-- `/site/` — the full site, `noindex` until the owner approves it. Set `"sitePublic": true` in `content/site.json` and
-  the full site moves to `/` and the holding page goes away.
-- Content: `content/site.json`, `content/projects.json`. Photos: `images/projects/<slug>/NN-name.webp`; the first file
-  is the cover, the folder decides what exists.
-- Brand: direction A (navy #0b1f3a, travertine #efe9df, bronze #7a5f44; Markazi Text + Vazirmatn + Cormorant
-  Garamond), shared with Sazban — Sazban repo `docs/DECISIONS.md` D-39, canvas «Zarone & Sazban — brand directions».
-  Fonts are OFL; licences in `fonts/`.
+```sh
+npm run build
+npm run check
+```
 
-## Publishing
-The hosting account pulls this public repo every 10 minutes (`deploy/publish.sh`, cron) and copies `dist/` to
-`~/zarone.ir`. A push to `main` is live within 10 minutes. No keys are stored here or in GitHub.
+Upload the **contents** of `dist/` to the domain's document root. The existing host script is `deploy/publish.sh`.
 
-## Rules
-Same as Sazban's CLAUDE.md where they apply: Persian on screen, Latin in `<bdi>`, no claim without a source the owner
-gave or a public record, nothing public (copy, photos, contacts) without the owner's yes on a picture. Photos and renders
-are the owner's; renders by outside studios are credited when the owner names them.
+## Pages and content
+
+- `/` retains the holding page until the owner's visual approval.
+- `/site/` shows all seven documented projects beneath the Symphony hero, plus direct links to the two Lavasan Instagram highlights. Each project has captioned galleries and verified source/location links where available; see [Instagram audit](docs/INSTAGRAM_AUDIT.md).
+- `/site-b/`, `/site-c/`, `/b/` and `/c/` remain available for the previous palette comparison links. Preview variants are not indexable.
+- After visual approval, set `sitePublic` in `content/site.json` to `true`, rebuild and publish. The full site then occupies `/`; its production URLs enter the sitemap.
+- Edit facts in `content/site.json` and `content/projects.json`; the latter declares covers, captions and photo/render/construction types. `content/instagram-highlights.json` holds the separate Lavasan archive links. Photography remains in `images/projects/`; the Instagram profile's original logo is stored locally at `images/zarone-original.jpg`.
+- Typography is Vazirmatn throughout, served locally; OFL licences are in `fonts/`. Palette, typography and logo are centralized in `content/brand.json`.
+- About Us follows Sazban’s current family heritage and connects the separate work of Zarone, Sazban and Kimia Ceram Zarin; see [brand/content provenance](docs/BRAND_ALIGNMENT.md).
+
+## Release and hosting status
+
+See [deployment notes](docs/DEPLOYMENT.md) and [visual review](docs/review/README.md). The repository previously documented a ten-minute host pull from `main`; that schedule and access have **not** been independently verified in this change. A GitHub push alone is not proof that `zarone.ir` is serving a release.
+
+The release marker `dist/release.json` identifies the website build. The publish script validates output and records the last successfully published commit, so a failed build is retried rather than silently skipped.

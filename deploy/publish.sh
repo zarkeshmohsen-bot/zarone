@@ -9,12 +9,13 @@ DOCROOT="${ZARONE_DOCROOT:-$HOME/zarone.ir}"
 NODE="${NODE:-$(command -v node || echo /opt/cpanel/ea-nodejs20/bin/node)}"
 MANIFEST="$DOCROOT/.zarone-files"
 cd "$SRC"
-before="$(git rev-parse HEAD)"
 git fetch -q origin main
 git reset -q --hard origin/main
 after="$(git rev-parse HEAD)"
-if [ "$before" = "$after" ] && [ "${1:-}" != "--force" ] && [ -f "$MANIFEST" ]; then exit 0; fi
+published="$(cat "$DOCROOT/.zarone-revision" 2>/dev/null || true)"
+if [ "$published" = "$after" ] && [ "${1:-}" != "--force" ] && [ -f "$MANIFEST" ]; then exit 0; fi
 "$NODE" build.mjs
+"$NODE" scripts/check-site.mjs
 mkdir -p "$DOCROOT"
 if [ ! -f "$MANIFEST" ] && [ -n "$(ls -A "$DOCROOT" 2>/dev/null)" ]; then
   backup="$HOME/zarone-docroot-backup-$(date +%Y%m%d-%H%M%S).tgz"
@@ -34,4 +35,5 @@ for h in ${ZARONE_HOSTS:-zarone.sazban.com}; do  # add zarone.ir once it is host
   t="$(curl -sk -A 'Mozilla/5.0' --max-time 15 "https://$h/" | grep -o '<title>[^<]*' | head -1)"
   case "$t" in *زروان*) echo "ok $h";; "") echo "skip $h (not reachable)";; *) echo "WRONG SITE on $h: ${t#<title>}";; esac
 done
+printf '%s\n' "$after" > "$DOCROOT/.zarone-revision"
 echo "$(date '+%F %T') published ${after:0:7}"
