@@ -117,3 +117,35 @@ h2{font-size:clamp(28px,3vw,40px);line-height:1.65}
  .family-fields{padding-block:55px}.family-heading .lead{font-size:14px}.field-grid{grid-template-columns:1fr;gap:30px;margin-top:35px}.field-grid article{padding-top:18px}.field-index{margin-bottom:16px}.field-grid h3{font-size:22px;margin-bottom:12px}.field-grid article>p:not(.eyebrow){font-size:13px;margin-bottom:12px}
  .sazban-story{padding-block:55px}.sazban-story-grid{grid-template-columns:1fr;gap:22px}.sazban-story h2{font-size:29px}.sazban-story .lead{font-size:14px}
 }
+
+/* Complete project index and source-backed captions. */
+.hero-photo>a{display:block;position:absolute;inset:0}
+.hero-photo figcaption{pointer-events:none}
+.hero-photo:after{pointer-events:none}
+.portfolio-intro{font-size:14px;color:var(--muted);max-width:640px;margin-top:15px;line-height:2.2}
+.portfolio-count{font-size:12px;color:var(--muted);margin-bottom:25px}
+.card-description{display:block;color:var(--muted);font-size:13px;line-height:2.1;margin-top:10px;max-width:480px}
+.media-kind{position:absolute;bottom:20px;inset-inline-start:18px;background:#071428df;color:var(--on-navy);padding:4px 10px;font-size:10px}
+.selected-grid .project-card[data-orientation=landscape] .project-image,.archive-grid .project-card[data-orientation=landscape] .project-image{aspect-ratio:4/3}
+.instagram-archive{padding-block:65px;background:#ede9e0;border-block:1px solid var(--line)}
+.instagram-archive h2{font-size:30px}
+.highlight-links{display:grid;grid-template-columns:1fr 1fr;gap:35px}
+.highlight-links>a{display:flex;justify-content:space-between;align-items:center;gap:25px;border-block-start:1px solid #b08d5766;padding-block:25px;min-height:130px}
+.highlight-links .eyebrow{display:block;font-size:11px;margin-bottom:8px}
+.highlight-links bdi{display:block;font-weight:550;font-size:20px}
+.highlight-links>a>span:last-child{font-size:30px;color:var(--bronze)}
+.highlight-action{display:block;font-size:11px;color:var(--muted);margin-top:12px}
+.project-cover figcaption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:12px;padding-block:15px;border-bottom:1px solid var(--line)}
+.project-summary h2{font-size:31px}
+.gallery-item{display:block;width:100%}
+.gallery-figure figcaption{display:flex;gap:7px 14px;flex-wrap:wrap;justify-content:space-between;align-items:baseline;color:var(--muted);font-size:12px;line-height:2;padding-block:12px}
+.gallery-figure figcaption small{font-size:10px;color:var(--bronze)}
+.media-credit{font-size:10px;flex-basis:100%}
+.project-sources{margin-top:35px;border-top:1px solid var(--line);padding-top:24px}
+.project-sources h3{font-size:15px;margin-bottom:15px}
+.project-sources>a{display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:48px;font-size:12px;border-bottom:1px solid var(--line);padding-block:10px}
+.project-sources>a>span:last-child{font-size:24px;color:var(--bronze)}
+@media(max-width:680px){.portfolio-intro{font-size:12px}.card-description{font-size:12px}.instagram-archive{padding-block:40px}.highlight-links{grid-template-columns:1fr;gap:5px}.highlight-links>a{padding-block:20px;min-height:120px}.instagram-archive h2{font-size:27px}.project-cover figcaption{padding-inline:22px;font-size:11px}.project-summary h2{font-size:27px}.gallery-figure figcaption{font-size:11px}.media-kind{bottom:13px;inset-inline-start:13px}}
+.hero-photo>a>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.credited-preview{background:var(--navy)}
+.credited-preview img{max-width:360px;margin-inline:auto}

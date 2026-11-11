@@ -15,6 +15,20 @@ for(const file of files(dist).filter(p=>p.endsWith('.html')&&!p.endsWith('/qa.ht
 }
 const base=site.sitePublic?'':'/site';
 for(const p of projects)if(!existsSync(join(dist,base,`projects/${p.slug}/index.html`)))errors.push(`missing project ${p.slug}`);
+const fullHome=readFileSync(join(dist,base,'index.html'),'utf8');
+const hero=projects.find(p=>p.slug===site.hero.projectSlug);
+if(site.hero.projectSlug!=='symphony-park-residence'||!hero)errors.push('Symphony must remain the hero project');
+if(hero&&!fullHome.includes(`href="${base}/projects/${hero.slug}/" aria-label="مشاهدهٔ پروژهٔ`))errors.push('hero does not link to its project');
+for(const p of projects){
+ if(!fullHome.includes(`data-project="${p.slug}"`))errors.push(`homepage omits ${p.slug}`);
+ if(!p.media?.some(m=>m.src===p.cover))errors.push(`${p.slug}: missing declared cover`);
+ const seen=new Set();
+ for(const m of p.media??[]){
+  if(seen.has(m.src))errors.push(`${p.slug}: duplicate image ${m.src}`);seen.add(m.src);
+  if(!m.caption||!['photo','render','construction'].includes(m.type))errors.push(`${p.slug}: uncaptioned or unclassified image`);
+  if(!existsSync(join(dist,m.src)))errors.push(`${p.slug}: missing media ${m.src}`);
+ }
+}
 const home=readFileSync(join(dist,'index.html'),'utf8');
 if(!site.sitePublic&&!home.includes(site.holding.text))errors.push('holding-page approval gate lost');
 const sitemap=readFileSync(join(dist,'sitemap.xml'),'utf8');if(/\/site(?:[-/])/.test(sitemap))errors.push('preview leaked into sitemap');

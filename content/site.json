@@ -14,8 +14,9 @@
   "hero": {
     "line": "ساختن، فراتر از معمول.",
     "text": "طراحی، ساخت، مشارکت و سرمایه‌گذاری در ساختمان‌های ممتاز؛ فضاهایی که فرم و کارکرد، آسایش و منظر را در یک بنا گرد می‌آورند.",
-    "image": "projects/fereshteh-58/02-from-street.webp",
-    "caption": "فرشته ۵۸ · ساختمان اداری · طرح"
+    "image": "projects/symphony-park-residence/01-terraces.webp",
+    "caption": "سمفونی پارک رزیدنس · تهران، الهیه",
+    "projectSlug": "symphony-park-residence"
   },
   "about": {
     "title": "دربارهٔ زروان",
@@ -129,5 +130,11 @@
     "text": "زمینی دارید یا طرحی در ذهن؟ دربارهٔ طراحی، ساخت یا مشارکت با ما گفت‌وگو کنید.",
     "button": "تماس با زروان"
   },
-  "familyFooter": "سه نسل ساختن، از دههٔ ۱۳۴۰"
+  "familyFooter": "سه نسل ساختن، از دههٔ ۱۳۴۰",
+  "portfolio": {
+    "title": "پروژه‌های زروان",
+    "eyebrow": "معماری، ساخت و بازسازی",
+    "intro": "از خانه و محل کار تا پژوهش و توسعه؛ هر پروژه، پاسخی به مکان، کاربری و شیوهٔ زندگی.",
+    "instagram": "https://www.instagram.com/zaronegroup/"
+  }
 }
