@@ -308,6 +308,20 @@
         "height": 640,
         "sourceUrl": "https://www.instagram.com/arventa.studio/reel/Ddwkhx1yljA/",
         "credit": "ARV Studio — Architecture & BIM"
+      },
+      {
+        "src": "/images/projects/kiminnotech/03-site-excavation.webp",
+        "caption": "گود و دیوار مهارشده",
+        "type": "construction",
+        "width": 720,
+        "height": 1280
+      },
+      {
+        "src": "/images/projects/kiminnotech/04-site-frame.webp",
+        "caption": "اجرای ستون‌ها و آرماتوربندی سقف",
+        "type": "construction",
+        "width": 1280,
+        "height": 960
       }
     ],
     "cover": "/images/projects/kiminnotech/01-render.webp"

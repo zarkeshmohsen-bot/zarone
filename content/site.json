@@ -142,14 +142,16 @@
     "title": "از گود تا کلید",
     "items": [
       {
-        "src": "/images/work/site-excavation.webp",
+        "src": "/images/projects/kiminnotech/03-site-excavation.webp",
         "alt": "گود عمیق با دیوار مهارشده و ستون‌های بتنی در حال اجرا",
-        "caption": "کارگاه · گود و دیوار مهارشده"
+        "caption": "کیمینوتک، پردیس · گود و دیوار مهارشده",
+        "href": "/projects/kiminnotech/"
       },
       {
-        "src": "/images/work/site-slab.webp",
+        "src": "/images/projects/kiminnotech/04-site-frame.webp",
         "alt": "آرماتوربندی سقف و ستون‌ها روی داربست در کارگاه",
-        "caption": "کارگاه · آرماتوربندی سقف"
+        "caption": "کیمینوتک، پردیس · اجرای اسکلت",
+        "href": "/projects/kiminnotech/"
       },
       {
         "src": "/images/work/tower-built.webp",
