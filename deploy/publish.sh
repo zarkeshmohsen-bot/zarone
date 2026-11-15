@@ -28,7 +28,10 @@ if [ ! -f "$MANIFEST" ] && [ -n "$(ls -A "$DOCROOT" 2>/dev/null)" ]; then
 fi
 ( cd dist && find . -type f | sort ) > "$SRC/.built-files"
 if [ -f "$MANIFEST" ]; then
-  comm -23 <(sort "$MANIFEST") <(sort "$SRC/.built-files") | while read -r f; do rm -f "$DOCROOT/$f"; done
+  # Plain files, not <(...): the host's shell has no /dev/fd (2026-11-15: «comm: /dev/fd/63: No such file or directory»).
+  sort "$MANIFEST" > "$SRC/.published-sorted"
+  sort "$SRC/.built-files" > "$SRC/.built-sorted"
+  comm -23 "$SRC/.published-sorted" "$SRC/.built-sorted" | while read -r f; do rm -f "$DOCROOT/$f"; done
 fi
 cp -a dist/. "$DOCROOT/"
 cp "$SRC/.built-files" "$MANIFEST"
