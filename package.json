@@ -1,0 +1,10 @@
+{
+  "name": "zarone-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node --check build.mjs && node --check src/site.js && node scripts/check-site.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

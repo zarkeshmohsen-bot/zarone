@@ -6,7 +6,7 @@ if (form) {
   const fold = s => s.normalize('NFKC').replace(/[يى]/g,'ی').replace(/ك/g,'ک').replace(/[\u064b-\u065f\u0670\u0640]/g,'').replace(/[۰-۹]/g,c=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(c))).replace(/[٠-٩]/g,c=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(c))).replace(/[\u200c\u200d]/g,' ').toLowerCase().replace(/\s+/g,' ').trim();
   const apply = (updateUrl = true) => {
     const words = fold(input.value).split(' ').filter(Boolean); let matches = 0;
-    cards.forEach(card => { const show = words.every(w => fold(card.dataset.projectSearch).includes(w)); card.hidden = !show; if(show) matches++; });
+    cards.forEach(card => { const hit = words.every(w => fold(card.dataset.projectSearch).includes(w)); card.dataset.searchOut = String(!hit); card.hidden = !hit || card.dataset.typeOut === 'true'; if(!card.hidden) matches++; });
     count.hidden = words.length === 0;
     count.textContent = `${new Intl.NumberFormat('fa-IR').format(matches)} از ${new Intl.NumberFormat('fa-IR').format(cards.length)} پروژه`;
     empty.hidden = matches !== 0;

@@ -5,7 +5,7 @@
     "use": "مسکونی",
     "place": "تهران، الهیه، خیابان افسر",
     "status": "ساخته‌شده ۱۳۹۸",
-    "summary": "برجی در الهیه با یازده واحد تک‌طبقه که واحد آخر دوبلکس است؛ دوازده طبقه بر فراز لابی، و چهار طبقه زیر آن برای استخر و باشگاه، پارکینگ، سالن نمایش و اتاق بیلیارد.",
+    "summary": "سمفونی پارک رزیدنس در الهیه؛ برجی با یازده واحد مسکونی که واحد پایانی آن دوبلکس است. ایوان‌ها، نمای تراورتن و شیشه و منظر البرز، در کنار لابی، استخر و فضاهای مشترک، روایت این پروژه را شکل می‌دهند.",
     "facts": [
       [
         "کاربری",
@@ -17,7 +17,7 @@
       ],
       [
         "طبقات روی زمین",
-        "۱۲ طبقه: ۱۱ واحد تک‌طبقه، واحد آخر دوبلکس"
+        "۱۲ طبقه: ۱۱ واحد مسکونی؛ واحد پایانی دوبلکس"
       ],
       [
         "همکف",
@@ -39,7 +39,154 @@
         "سال ساخت",
         "۱۳۹۸"
       ]
-    ]
+    ],
+    "instagram": {
+      "url": "https://www.instagram.com/zaronegroup/p/C7b6v3QtviV/",
+      "locationLabel": "Symphony Park Residence - مجتمع مسکونی سمفونی",
+      "locationUrl": "https://www.instagram.com/explore/locations/100258368276647/symphony-park-residence-/",
+      "additional": [
+        {
+          "url": "https://www.instagram.com/zaronegroup/p/CLonDKSHFXO/",
+          "label": "استخر و فضاهای مشترک"
+        },
+        {
+          "url": "https://www.instagram.com/zaronegroup/p/CKnxDjYhS98/",
+          "label": "لابی و طراحی داخلی"
+        }
+      ]
+    },
+    "caption": "ایوان، سنگ و شیشه؛ در کنار منظر البرز و فضاهای مشترک زندگی.",
+    "media": [
+      {
+        "src": "/images/projects/symphony-park-residence/01-terraces.webp",
+        "caption": "نما و ایوان‌های سمفونی پارک رزیدنس",
+        "type": "photo",
+        "width": 632,
+        "height": 928
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/instagram-lobby-01.webp",
+        "caption": "لابی و فضای انتظار",
+        "type": "photo",
+        "width": 1440,
+        "height": 1080,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/CKnxDjYhS98/"
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/instagram-lobby-02.webp",
+        "caption": "نورپردازی و جزئیات لابی",
+        "type": "photo",
+        "width": 1440,
+        "height": 1080,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/CKnxDjYhS98/"
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/instagram-pool-01.webp",
+        "caption": "استخر و ارتباط آن با فضای باز",
+        "type": "photo",
+        "width": 1440,
+        "height": 1080,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/CLonDKSHFXO/"
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/instagram-pool-02.webp",
+        "caption": "جدارهٔ شیشه‌ای و نور استخر",
+        "type": "photo",
+        "width": 1440,
+        "height": 1080,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/CLonDKSHFXO/"
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/02-travertine.webp",
+        "caption": "جزئیات نمای تراورتن",
+        "type": "photo",
+        "width": 810,
+        "height": 1080
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/instagram-staircase-01.webp",
+        "caption": "سنگ‌کاری و نردهٔ شیشه‌ای پلکان",
+        "type": "photo",
+        "width": 1440,
+        "height": 1440,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/CfYVFnCqu0I/"
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/instagram-landscape-01.webp",
+        "caption": "ورودی و محوطه‌سازی",
+        "type": "photo",
+        "width": 1080,
+        "height": 1080,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/B7sr-VLn_2f/"
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/04-view-alborz.webp",
+        "caption": "منظر البرز از ایوان",
+        "type": "photo",
+        "width": 1188,
+        "height": 619
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/05-view-rainbow.webp",
+        "caption": "منظر پروژه در هوای بهاری",
+        "type": "photo",
+        "width": 1188,
+        "height": 772,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/C7b6v3QtviV/"
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/08-render-aerial.webp",
+        "caption": "نمای کلی طرح از بالا",
+        "type": "render",
+        "width": 1400,
+        "height": 788
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/03-entrance.webp",
+        "caption": "ورودی و نمای ساختمان هنگام تکمیل",
+        "type": "construction",
+        "width": 810,
+        "height": 1080
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/04-street.webp",
+        "caption": "نمای ساختمان از خیابان، هنگام تکمیل",
+        "type": "construction",
+        "width": 810,
+        "height": 1080
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/06-site-winter.webp",
+        "caption": "پروژه در فصل زمستان، هنگام ساخت",
+        "type": "construction",
+        "width": 810,
+        "height": 1080
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/07-site-winter.webp",
+        "caption": "اجرای نما و کارگاه در زمستان",
+        "type": "construction",
+        "width": 810,
+        "height": 1080
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/instagram-staircase-02.webp",
+        "caption": "نصب نردهٔ شیشه‌ای پلکان",
+        "type": "construction",
+        "width": 1440,
+        "height": 1440,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/CfYVFnCqu0I/"
+      },
+      {
+        "src": "/images/projects/symphony-park-residence/instagram-landscape-02.webp",
+        "caption": "نما و محوطه هنگام تکمیل ساختمان",
+        "type": "construction",
+        "width": 1080,
+        "height": 1080,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/B7sr-VLn_2f/"
+      }
+    ],
+    "cover": "/images/projects/symphony-park-residence/01-terraces.webp"
   },
   {
     "slug": "fereshteh-58",
@@ -69,7 +216,39 @@
         "وضعیت",
         "در حال طراحی؛ مشخصات ممکن است تغییر کند"
       ]
-    ]
+    ],
+    "caption": "حجم‌های شیشه‌ای و باغ‌های معلق، میان دو دیوار سنگی شیاردار.",
+    "media": [
+      {
+        "src": "/images/projects/fereshteh-58/02-from-street.webp",
+        "caption": "نمای طرح از خیابان",
+        "type": "render",
+        "width": 1218,
+        "height": 1400
+      },
+      {
+        "src": "/images/projects/fereshteh-58/01-elevation.webp",
+        "caption": "نمای اصلی و باغ‌های معلق",
+        "type": "render",
+        "width": 748,
+        "height": 1400
+      },
+      {
+        "src": "/images/projects/fereshteh-58/03-stone.webp",
+        "caption": "جزئیات دیوارهای سنگی",
+        "type": "render",
+        "width": 647,
+        "height": 1400
+      },
+      {
+        "src": "/images/projects/fereshteh-58/04-context.webp",
+        "caption": "جای‌گیری طرح در بافت پیرامون",
+        "type": "render",
+        "width": 640,
+        "height": 640
+      }
+    ],
+    "cover": "/images/projects/fereshteh-58/02-from-street.webp"
   },
   {
     "slug": "kiminnotech",
@@ -88,10 +267,6 @@
         "۱٬۶۳۴ مترمربع"
       ],
       [
-        "زیربنا",
-        "حدود ۵٬۱۹۰ مترمربع در طرح"
-      ],
-      [
         "طبقات",
         "۸ طبقه در طرح"
       ],
@@ -103,7 +278,39 @@
         "وضعیت",
         "در مرحلهٔ طراحی و ساخت؛ مشخصات ممکن است تغییر کند"
       ]
-    ]
+    ],
+    "instagram": {
+      "url": "https://www.instagram.com/zaronegroup/p/C29JyqXtDhV/",
+      "locationLabel": "پارک فناوری پردیس",
+      "locationUrl": "https://www.instagram.com/explore/locations/2086909034954089/pardis-technology-park/",
+      "additional": [
+        {
+          "url": "https://www.instagram.com/arventa.studio/reel/Ddwkhx1yljA/",
+          "label": "ارائهٔ معماری استودیو ARV"
+        }
+      ]
+    },
+    "caption": "مرکز پژوهش و نوآوری کیمیا سرام زرین در پارک فناوری پردیس.",
+    "media": [
+      {
+        "src": "/images/projects/kiminnotech/01-render.webp",
+        "caption": "تصویرسازی مرکز پژوهش و نوآوری",
+        "type": "render",
+        "width": 1188,
+        "height": 663,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/C29JyqXtDhV/"
+      },
+      {
+        "src": "/images/projects/kiminnotech/02-arv-presentation.webp",
+        "caption": "ارائهٔ معماری منتشرشده توسط استودیو ARV",
+        "type": "render",
+        "width": 360,
+        "height": 640,
+        "sourceUrl": "https://www.instagram.com/arventa.studio/reel/Ddwkhx1yljA/",
+        "credit": "ARV Studio — Architecture & BIM"
+      }
+    ],
+    "cover": "/images/projects/kiminnotech/01-render.webp"
   },
   {
     "slug": "ramsar-arbekeleh",
@@ -125,19 +332,57 @@
         "وضعیت",
         "طرح معماری و منظرسازی، ۱۴۰۲"
       ]
-    ]
+    ],
+    "instagram": {
+      "url": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/",
+      "locationLabel": "رامسر، اربکله",
+      "locationUrl": "https://www.instagram.com/explore/locations/1733593196938839/_/",
+      "additional": []
+    },
+    "caption": "ویلاهایی روی شیب جنگلی اربکله، رو به دریای خزر.",
+    "media": [
+      {
+        "src": "/images/projects/ramsar-arbekeleh/01-sea.webp",
+        "caption": "طرح ویلاها رو به دریای خزر",
+        "type": "render",
+        "width": 1188,
+        "height": 783,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/"
+      },
+      {
+        "src": "/images/projects/ramsar-arbekeleh/02-hill.webp",
+        "caption": "جای‌گیری حجم‌ها روی شیب جنگلی",
+        "type": "render",
+        "width": 1188,
+        "height": 667,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/"
+      },
+      {
+        "src": "/images/projects/ramsar-arbekeleh/03-aerial.webp",
+        "caption": "بام‌های سبز، استخرها و منظرسازی در طرح",
+        "type": "render",
+        "width": 1188,
+        "height": 667,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/"
+      }
+    ],
+    "cover": "/images/projects/ramsar-arbekeleh/01-sea.webp"
   },
   {
     "slug": "shemshak-studio",
     "name": "استودیو شمشک",
     "use": "بازسازی مسکونی",
-    "place": "شمشک",
+    "place": "شمشک، آ.اس.پ",
     "status": "بازسازی‌شده ۱۴۰۳",
     "summary": "بازسازی یک آپارتمان استودیو در شمشک: سقف بتن نمایان، چوب بلوط، جزیرهٔ آشپزخانه از سنگ سبز و نور خطی.",
     "facts": [
       [
         "کاربری",
         "آپارتمان استودیو"
+      ],
+      [
+        "موقعیت",
+        "شمشک، آ.اس.پ"
       ],
       [
         "کار",
@@ -147,7 +392,41 @@
         "سال",
         "۱۴۰۳"
       ]
-    ]
+    ],
+    "instagram": {
+      "url": "https://www.instagram.com/zaronegroup/p/DEe8qcJpYKU/",
+      "locationLabel": "A.S.P. Shemshak",
+      "locationUrl": "https://www.instagram.com/explore/locations/234460950/asp-shemshak/",
+      "additional": []
+    },
+    "caption": "بازسازی یک آپارتمان استودیو؛ بتن نمایان، چوب بلوط و سنگ سبز.",
+    "media": [
+      {
+        "src": "/images/projects/shemshak-studio/01-kitchen.webp",
+        "caption": "آشپزخانه و جزیرهٔ سنگ سبز",
+        "type": "photo",
+        "width": 1188,
+        "height": 766,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/DEe8qcJpYKU/"
+      },
+      {
+        "src": "/images/projects/shemshak-studio/02-living.webp",
+        "caption": "نشیمن پس از بازسازی",
+        "type": "photo",
+        "width": 1188,
+        "height": 766,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/DEe8qcJpYKU/"
+      },
+      {
+        "src": "/images/projects/shemshak-studio/03-living.webp",
+        "caption": "چوب بلوط، بتن نمایان و نور خطی",
+        "type": "photo",
+        "width": 1188,
+        "height": 766,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/DEe8qcJpYKU/"
+      }
+    ],
+    "cover": "/images/projects/shemshak-studio/01-kitchen.webp"
   },
   {
     "slug": "sohrevardi-office",
@@ -169,7 +448,25 @@
         "سال",
         "۱۴۰۳"
       ]
-    ]
+    ],
+    "instagram": {
+      "url": "https://www.instagram.com/zaronegroup/p/C-5V-1atEfT/",
+      "locationLabel": "سهروردی شمالی",
+      "locationUrl": "https://www.instagram.com/explore/locations/1780713462226490/",
+      "additional": []
+    },
+    "caption": "بازسازی فضاهای عمومی؛ سنگ تیره، بتن و نور خطی.",
+    "media": [
+      {
+        "src": "/images/projects/sohrevardi-office/01-lobby.webp",
+        "caption": "فضای عمومی بازسازی‌شده و نور خطی سقف",
+        "type": "photo",
+        "width": 1188,
+        "height": 890,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/C-5V-1atEfT/"
+      }
+    ],
+    "cover": "/images/projects/sohrevardi-office/01-lobby.webp"
   },
   {
     "slug": "fresno-plaza",
@@ -184,13 +481,31 @@
         "تجاری"
       ],
       [
-        "موقعیت",
-        "فرزنو، کالیفرنیا"
+        "نشانی",
+        "۱۴۵۲ خیابان آلوویال، فرزنو، کالیفرنیا"
       ],
       [
         "وضعیت",
         "طرح معماری و منظرسازی، ۱۴۰۲"
       ]
-    ]
+    ],
+    "instagram": {
+      "url": "https://www.instagram.com/zaronegroup/p/CtKJ9TvtjPg/",
+      "locationLabel": null,
+      "locationUrl": null,
+      "additional": []
+    },
+    "caption": "طرح پلازا و منظرسازی در خیابان آلوویال فرزنو.",
+    "media": [
+      {
+        "src": "/images/projects/fresno-plaza/01-street.webp",
+        "caption": "طرح پلازا و منظرسازی در خیابان آلوویال",
+        "type": "render",
+        "width": 1108,
+        "height": 657,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/CtKJ9TvtjPg/"
+      }
+    ],
+    "cover": "/images/projects/fresno-plaza/01-street.webp"
   }
 ]
