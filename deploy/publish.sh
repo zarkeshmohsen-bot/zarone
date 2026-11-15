@@ -4,6 +4,10 @@
 # Safety: the first run backs up whatever the docroot holds to ~/zarone-docroot-backup-<date>.tgz; later runs delete
 # only files that an earlier run published (listed in $DOCROOT/.zarone-files), never anything else.
 set -euo pipefail
+# One sort order for every run: cron runs with the C locale and an interactive shell with en_US, so a manifest written by
+# one was «not in sorted order» for the other; `comm` then failed and, under pipefail, every cron run stopped before
+# copying (2026-11-08 → 11-15, the site stayed on the 8 November build).
+export LC_ALL=C
 SRC="${ZARONE_SRC:-$HOME/zarone-src}"
 DOCROOT="${ZARONE_DOCROOT:-$HOME/zarone.ir}"
 NODE="${NODE:-$(command -v node || echo /opt/cpanel/ea-nodejs20/bin/node)}"
@@ -24,7 +28,7 @@ if [ ! -f "$MANIFEST" ] && [ -n "$(ls -A "$DOCROOT" 2>/dev/null)" ]; then
 fi
 ( cd dist && find . -type f | sort ) > "$SRC/.built-files"
 if [ -f "$MANIFEST" ]; then
-  comm -23 "$MANIFEST" "$SRC/.built-files" | while read -r f; do rm -f "$DOCROOT/$f"; done
+  comm -23 <(sort "$MANIFEST") <(sort "$SRC/.built-files") | while read -r f; do rm -f "$DOCROOT/$f"; done
 fi
 cp -a dist/. "$DOCROOT/"
 cp "$SRC/.built-files" "$MANIFEST"
