@@ -12,10 +12,11 @@
     "line": "#e6e0d4",
     "ink": "#1b2432",
     "muted": "#5d6470",
-    "accent": "#b08d57",
+    "accent": "#c8a25a",
     "accent-ink": "#7a5f44",
     "accent-light": "#c9b18d"
   },
-  "logo": "/images/zarone-original.jpg",
-  "logoType": "image/jpeg"
+  "logo": "/images/brand/zarone-mark.svg",
+  "logoType": "image/svg+xml",
+  "wordmark": "/images/brand/zarone-wordmark-light.svg"
 }

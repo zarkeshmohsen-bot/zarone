@@ -8,6 +8,9 @@ npm run check
 ```
 
 Upload the **contents** of `dist/` to the domain's document root. The existing host script is `deploy/publish.sh`.
+## Publishing
+The hosting account pulls this public repo every 10 minutes (`deploy/publish.sh`, cron) and copies `dist/` to
+`~/zarone.ir`. This schedule is documented but unverified. On 11 November 2026, the RTL fix was merged and tested, while the hosted preview still served the older header and zarone.ir was unreachable from the review browser. A push alone is not proof of deployment; verify hosting publication and the actual domain before claiming the change is live. No keys are stored here or in GitHub.
 
 ## Pages and content
 

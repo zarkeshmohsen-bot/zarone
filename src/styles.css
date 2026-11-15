@@ -149,3 +149,40 @@ h2{font-size:clamp(28px,3vw,40px);line-height:1.65}
 .hero-photo>a>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
 .credited-preview{background:var(--navy)}
 .credited-preview img{max-width:360px;margin-inline:auto}
+
+/* From main (#2 RTL menu, #3 project search), ported onto the navy header. */
+/* Navigation begins at the RTL leading edge. Native details also works without JavaScript. */
+.mobile-navigation { display: none; }
+.top nav { margin-inline-end: auto; }
+@media (max-width: 48rem) {
+  .top .desktop-navigation { display: none; }
+  .mobile-navigation { display: block; position: relative; }
+  .mobile-navigation summary { display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; cursor: pointer; list-style: none; color: var(--navy); border-radius: 4px; }
+  .mobile-navigation summary::-webkit-details-marker { display: none; }
+  .mobile-navigation summary:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
+  .mobile-navigation[open] summary { background: var(--line); }
+  .mobile-navigation nav { position: absolute; inset-inline-start: 0; top: calc(100% + .5rem); z-index: 50; width: min(20rem, calc(100vw - 2 * var(--gutter))); display: flex; flex-direction: column; padding: .5rem; background: var(--card); border: 1px solid var(--line); box-shadow: 0 12px 24px rgb(7 21 39 / 16%); }
+  .mobile-navigation nav a { width: 100%; }
+}
+/* Catalogue search stays with the projects it filters; the small site needs no global search modal. */
+[hidden] { display: none !important; }
+.project-search { max-width: 40rem; margin-block: 1.5rem 1rem; }
+.project-search label { display: block; margin-bottom: .4rem; font-size: .9rem; font-weight: 600; }
+.project-search-field { display: flex; align-items: center; min-height: 3rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--card); }
+.project-search input { min-width: 0; flex: 1; min-height: 3rem; padding-inline: .8rem; font: inherit; font-size: 1rem; color: var(--ink); background: transparent; border: 0; outline: none; }
+.project-search input::-webkit-search-cancel-button { display: none; }
+.project-search button { width: 2.75rem; min-width: 2.75rem; min-height: 2.75rem; display: grid; place-items: center; border: 0; border-radius: .4rem; background: transparent; color: var(--navy); font: inherit; cursor: pointer; }
+.project-search-field:focus-within { outline: 2px solid var(--navy); outline-offset: 2px; }
+.project-search button:focus-visible { outline: 2px solid var(--navy); outline-offset: -3px; }
+[data-project-count], [data-project-empty] { margin-block: .5rem 1rem; color: var(--muted); font-size: .9rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* Navy header: the menu trigger and panel keep contrast; new mark and Latin wordmark (owner's 2026-11-15 design). */
+.top .mobile-navigation summary{color:var(--on-navy);min-width:44px;min-height:44px}
+.top .mobile-navigation[open] summary{background:#ffffff1a}
+.top .mobile-navigation nav{background:var(--navy);border:1px solid #ffffff26;flex-direction:column;gap:0}
+.top .mobile-navigation nav a{color:var(--on-navy);min-height:44px;display:flex;align-items:center;padding-inline:.8rem}
+.top .header-inner{gap:16px}
+@media(max-width:48rem){.top .header-contact{display:none}}
+.identity img.identity-latin{width:auto;height:11px;display:block;margin-top:6px}
+.top .header-inner .mobile-navigation nav{display:flex}
+.identity img.identity-latin{border-radius:0}
