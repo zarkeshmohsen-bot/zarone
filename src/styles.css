@@ -186,3 +186,7 @@ h2{font-size:clamp(28px,3vw,40px);line-height:1.65}
 .identity img.identity-latin{width:auto;height:11px;display:block;margin-top:6px}
 .top .header-inner .mobile-navigation nav{display:flex}
 .identity img.identity-latin{border-radius:0}
+/* Real photographs of work on site and finished buildings (owner, 2026-11-15: more real photos than designs). */
+.real-work{padding-block:0 100px}.real-work-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr 1fr;gap:18px;align-items:start}.real-work figure img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:5px;filter:saturate(.88) contrast(1.03)}.real-work figure:nth-child(even){margin-top:60px}.real-work figcaption{font-size:12px;color:var(--muted);margin-top:10px}
+@media(max-width:900px){.real-work-grid{grid-template-columns:1fr 1fr}.real-work figure:nth-child(even){margin-top:40px}}
+@media(max-width:680px){.real-work{padding-block:0 55px}.real-work-grid{gap:12px}.real-work figcaption{font-size:11px}}

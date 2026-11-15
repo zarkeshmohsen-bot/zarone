@@ -136,5 +136,33 @@
     "eyebrow": "معماری، ساخت و بازسازی",
     "intro": "از خانه و محل کار تا پژوهش و توسعه؛ هر پروژه، پاسخی به مکان، کاربری و شیوهٔ زندگی.",
     "instagram": "https://www.instagram.com/zaronegroup/"
+  },
+  "realWork": {
+    "eyebrow": "کارگاه و ساختمان‌های ساخته‌شده",
+    "title": "از گود تا کلید",
+    "items": [
+      {
+        "src": "/images/projects/kiminnotech/03-site-excavation.webp",
+        "alt": "گود عمیق با دیوار مهارشده و ستون‌های بتنی در حال اجرا",
+        "caption": "کیمینوتک، پردیس · گود و دیوار مهارشده",
+        "href": "/projects/kiminnotech/"
+      },
+      {
+        "src": "/images/projects/kiminnotech/04-site-frame.webp",
+        "alt": "آرماتوربندی سقف و ستون‌ها روی داربست در کارگاه",
+        "caption": "کیمینوتک، پردیس · اجرای اسکلت",
+        "href": "/projects/kiminnotech/"
+      },
+      {
+        "src": "/images/work/tower-built.webp",
+        "alt": "برج مسکونی ساخته‌شده با نمای سنگ روشن و ایوان‌های شیشه‌ای",
+        "caption": "برج مسکونی · ساخته‌شده"
+      },
+      {
+        "src": "/images/work/villa-built.webp",
+        "alt": "ویلای ساخته‌شده با نمای سنگ تیره و چوب و ورودی سفید",
+        "caption": "ویلا · ساخته‌شده"
+      }
+    ]
   }
 }
