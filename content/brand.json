@@ -18,5 +18,6 @@
   },
   "logo": "/images/brand/zarone-mark.svg",
   "logoType": "image/svg+xml",
-  "wordmark": "/images/brand/zarone-wordmark-light.svg"
+  "wordmark": "/images/brand/zarone-wordmark-light.svg",
+  "wordmarkOnLight": "/images/brand/zarone-wordmark-dark.svg"
 }

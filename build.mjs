@@ -22,7 +22,7 @@ const mediaKind=m=>({render:'تصویر طرح',construction:'عکس هنگام 
 const mediaCaption=(p,m)=>[p.name,m.caption,mediaKind(m),m.credit].filter(Boolean).join(' · ');
 const category=p=>p.use.includes('بازسازی')?'renovation':p.use==='مسکونی'?'residential':p.use==='ویلایی'?'villa':'work';
 const arrow='<span aria-hidden="true">↗</span>';
-const logo=(small=false)=>`<span class="identity${small?' small':''}"><img src="${esc(brand.logo)}" alt="" width="54" height="54"><span><strong>${esc(site.wordmark)}</strong><img class="identity-latin" src="${esc(brand.wordmark)}" alt="${esc(site.wordmarkLatin)}" height="14"></span></span>`;
+const logo=(small=false,onLight=false)=>`<span class="identity${small?' small':''}"><img src="${esc(brand.logo)}" alt="" width="54" height="54"><span><strong>${esc(site.wordmark)}</strong><img class="identity-latin" src="${esc(onLight?brand.wordmarkOnLight:brand.wordmark)}" alt="${esc(site.wordmarkLatin)}" height="14"></span></span>`;
 let base='',css='/styles.css';
 function head(title,description,path,{index=false,image=featuredMedia.src,type='website',schema=null}={}){
  const url=origin+path;
@@ -62,7 +62,7 @@ function pages(){
  const contact=layout(`تماس با زروان — ${site.nameFa}`,`دفتر زروان: ${site.contact.address}، تلفن ${site.contact.phoneDisplay}`,`${base}/contact/`,`<section class="page-heading wrap"><p class="eyebrow">از ایده تا ساختمان</p><h1>با زروان گفت‌وگو کنید.</h1></section><section class="wrap contact-grid"><div><p class="lead">${esc(site.cta.text)}</p><div class="contact-list">${contacts()}</div><div class="contact-address"><p class="eyebrow">نشانی دفتر</p><p>${esc(site.contact.address)}</p></div></div><figure class="contact-photo">${image('/images/projects/symphony-park-residence/03-entrance.webp','ورودی سمفونی پارک رزیدنس در خیابان افسر','',false)}<figcaption>سمفونی پارک رزیدنس · الهیه</figcaption></figure></section>`,{current:`${base}/contact/`});
  return {home,archive,detail,about,contact};
 }
-function holding(){return `${head(`${site.nameFa} — ${site.holding.line}`,site.descriptor,'/',{index:true})}<body class="holding"><main class="hold"><div class="hold-text">${logo()}<p class="eyebrow">${esc(site.nameFa)}</p><h1>${esc(site.holding.line)}</h1><p class="lead">${esc(site.holding.text)}</p><div class="contact-list">${contacts()}</div><p>${esc(site.contact.address)}</p></div><figure class="hold-photo">${image('/images/holding.webp','سمفونی پارک رزیدنس، الهیه','',false)}<figcaption>سمفونی پارک رزیدنس · الهیه · ۱۳۹۸</figcaption></figure></main></body></html>`;}
+function holding(){return `${head(`${site.nameFa} — ${site.holding.line}`,site.descriptor,'/',{index:true})}<body class="holding"><main class="hold"><div class="hold-text">${logo(false,true)}<p class="eyebrow">${esc(site.nameFa)}</p><h1>${esc(site.holding.line)}</h1><p class="lead">${esc(site.holding.text)}</p><div class="contact-list">${contacts()}</div><p>${esc(site.contact.address)}</p></div><figure class="hold-photo">${image('/images/holding.webp','سمفونی پارک رزیدنس، الهیه','',false)}<figcaption>سمفونی پارک رزیدنس · الهیه · ۱۳۹۸</figcaption></figure></main></body></html>`;}
 rmSync(out,{recursive:true,force:true});mkdirSync(out,{recursive:true});
 for(const dir of ['fonts','images'])cpSync(join(root,dir),join(out,dir),{recursive:true});
 for(const file of ['styles.css','styles-b.css','styles-c.css','site.js','navigation.js','project-filter.js'])cpSync(join(root,'src',file),join(out,file));
