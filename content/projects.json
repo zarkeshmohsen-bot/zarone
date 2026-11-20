@@ -189,150 +189,63 @@
     "cover": "/images/projects/symphony-park-residence/01-terraces.webp"
   },
   {
-    "slug": "fereshteh-58",
-    "name": "فرشته ۵۸",
-    "use": "اداری",
-    "place": "تهران، منطقهٔ ۱",
-    "status": "در حال طراحی",
-    "summary": "دو دیوار سنگی شیاردار و میانشان حجم‌های شیشه‌ای و باغ‌های معلق؛ ساختمان اداری روی زمینی به مساحت ۱٬۲۴۵٫۵ مترمربع در خیابان فرشته.",
+    "slug": "zafaranieh",
+    "name": "ساختمان زعفرانیه",
+    "use": "مسکونی",
+    "place": "تهران، زعفرانیه",
+    "status": "ساخته‌شده در دههٔ ۱۳۹۰",
+    "summary": "ساختمانی مسکونی در پنج طبقه در زعفرانیه. نمای تراورتن با ایوان‌های سرتاسری و نردهٔ شیشه‌ای، و رمپی سنگی و خمیده که زیر ساختمان، کنار دیوارهٔ فلزی سفید، به ورودی می‌رسد.",
     "facts": [
       [
         "کاربری",
-        "اداری"
-      ],
-      [
-        "زیربنای ناخالص",
-        "حدود ۱۶٬۲۳۸ مترمربع در طرح"
+        "مسکونی"
       ],
       [
         "طبقات",
-        "۷ زیرزمین، همکف و ۱۱ طبقه در طرح"
+        "۵ طبقه"
       ],
       [
-        "زمین",
-        "۱٬۲۴۵٫۵ مترمربع"
+        "نما",
+        "تراورتن و شیشه"
       ],
       [
-        "وضعیت",
-        "در حال طراحی؛ مشخصات ممکن است تغییر کند"
+        "ساخت",
+        "ساخته‌شده در دههٔ ۱۳۹۰"
       ]
     ],
-    "caption": "حجم‌های شیشه‌ای و باغ‌های معلق، میان دو دیوار سنگی شیاردار.",
+    "caption": "ایوان‌های تراورتن، رمپی خمیده و ورودی‌ای در میان سبزه.",
     "media": [
       {
-        "src": "/images/projects/fereshteh-58/02-from-street.webp",
-        "caption": "نمای طرح از خیابان",
-        "type": "render",
-        "width": 1218,
-        "height": 1400
+        "src": "/images/projects/zafaranieh/01-facade.webp",
+        "caption": "نما، ایوان‌ها و رمپ سنگی خمیده",
+        "type": "photo",
+        "width": 810,
+        "height": 1080
       },
       {
-        "src": "/images/projects/fereshteh-58/01-elevation.webp",
-        "caption": "نمای اصلی و باغ‌های معلق",
-        "type": "render",
-        "width": 748,
-        "height": 1400
+        "src": "/images/projects/zafaranieh/02-ramp.webp",
+        "caption": "رمپ سرپوشیده و دیوارهٔ فلزی سفید",
+        "type": "photo",
+        "width": 1080,
+        "height": 810
       },
       {
-        "src": "/images/projects/fereshteh-58/03-stone.webp",
-        "caption": "جزئیات دیوارهای سنگی",
-        "type": "render",
-        "width": 647,
-        "height": 1400
-      },
-      {
-        "src": "/images/projects/fereshteh-58/04-context.webp",
-        "caption": "جای‌گیری طرح در بافت پیرامون",
-        "type": "render",
-        "width": 640,
-        "height": 640
+        "src": "/images/projects/zafaranieh/03-gate.webp",
+        "caption": "درِ ورودی و نمای ساختمان از خیابان",
+        "type": "photo",
+        "width": 810,
+        "height": 1080
       }
     ],
-    "cover": "/images/projects/fereshteh-58/02-from-street.webp"
+    "cover": "/images/projects/zafaranieh/01-facade.webp"
   },
   {
-    "slug": "kiminnotech",
-    "name": "کیمینوتک",
-    "use": "مرکز پژوهش و نوآوری",
-    "place": "پارک فناوری پردیس، فاز ۳",
-    "status": "در مرحلهٔ طراحی و ساخت",
-    "summary": "مرکز پژوهش و نوآوری کیمیا سرام زرین در پارک فناوری پردیس: آزمایشگاه، پیوند دانشگاه و صنعت، سالن همایش و نمایشگاه، و تولید مواد کم‌حجم و پرارزش.",
-    "facts": [
-      [
-        "کاربری",
-        "آزمایشگاه، تحقیق، همایش و نمایشگاه، تولید ویژه"
-      ],
-      [
-        "زمین",
-        "۱٬۶۳۴ مترمربع"
-      ],
-      [
-        "طبقات",
-        "۸ طبقه در طرح"
-      ],
-      [
-        "موقعیت",
-        "پارک فناوری پردیس، فاز ۳، خیابان کارآفرینی، قطعهٔ ۲۹۲"
-      ],
-      [
-        "وضعیت",
-        "در مرحلهٔ طراحی و ساخت؛ مشخصات ممکن است تغییر کند"
-      ]
-    ],
-    "instagram": {
-      "url": "https://www.instagram.com/zaronegroup/p/C29JyqXtDhV/",
-      "locationLabel": "پارک فناوری پردیس",
-      "locationUrl": "https://www.instagram.com/explore/locations/2086909034954089/pardis-technology-park/",
-      "additional": [
-        {
-          "url": "https://www.instagram.com/arventa.studio/reel/Ddwkhx1yljA/",
-          "label": "ارائهٔ معماری استودیو ARV"
-        }
-      ]
-    },
-    "caption": "مرکز پژوهش و نوآوری کیمیا سرام زرین در پارک فناوری پردیس.",
-    "media": [
-      {
-        "src": "/images/projects/kiminnotech/01-render.webp",
-        "caption": "تصویرسازی مرکز پژوهش و نوآوری",
-        "type": "render",
-        "width": 1188,
-        "height": 663,
-        "sourceUrl": "https://www.instagram.com/zaronegroup/p/C29JyqXtDhV/"
-      },
-      {
-        "src": "/images/projects/kiminnotech/02-arv-presentation.webp",
-        "caption": "ارائهٔ معماری منتشرشده توسط استودیو ARV",
-        "type": "render",
-        "width": 360,
-        "height": 640,
-        "sourceUrl": "https://www.instagram.com/arventa.studio/reel/Ddwkhx1yljA/",
-        "credit": "ARV Studio — Architecture & BIM"
-      },
-      {
-        "src": "/images/projects/kiminnotech/03-site-excavation.webp",
-        "caption": "گود و دیوار مهارشده",
-        "type": "construction",
-        "width": 720,
-        "height": 1280
-      },
-      {
-        "src": "/images/projects/kiminnotech/04-site-frame.webp",
-        "caption": "اجرای ستون‌ها و آرماتوربندی سقف",
-        "type": "construction",
-        "width": 1280,
-        "height": 960
-      }
-    ],
-    "cover": "/images/projects/kiminnotech/01-render.webp"
-  },
-  {
-    "slug": "ramsar-arbekeleh",
-    "name": "ویلاهای اربکله",
+    "slug": "khaneh-darya-villas",
+    "name": "ویلاهای خانه دریا",
     "use": "ویلایی",
-    "place": "رامسر، اربکله",
-    "status": "طرح ۱۴۰۲",
-    "summary": "ویلاهایی روی شیب جنگلی اربکله، رو به دریای خزر؛ حجم‌های سفید با بام سبز، استخر و دیوارهای سنگی که با شیب زمین پایین می‌آیند.",
+    "place": "مازندران، خانه دریا",
+    "status": "ساخته‌شده",
+    "summary": "دو ویلا در خانه دریا، کنار دریای مازندران. یکی با روکش چوب، حجم سنگ تیره، قاب سفید و لبهٔ تاشدهٔ بام؛ دیگری با بام‌های خمیده، قاب‌های سنگی و ایوانی با نردهٔ سنگی.",
     "facts": [
       [
         "کاربری",
@@ -340,47 +253,93 @@
       ],
       [
         "موقعیت",
-        "رامسر، اربکله، رو به دریای خزر"
+        "مازندران، خانه دریا، کنار دریا"
+      ],
+      [
+        "پروژه",
+        "دو ویلا"
       ],
       [
         "وضعیت",
-        "طرح معماری و منظرسازی، ۱۴۰۲"
+        "ساخته‌شده"
       ]
     ],
-    "instagram": {
-      "url": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/",
-      "locationLabel": "رامسر، اربکله",
-      "locationUrl": "https://www.instagram.com/explore/locations/1733593196938839/_/",
-      "additional": []
-    },
-    "caption": "ویلاهایی روی شیب جنگلی اربکله، رو به دریای خزر.",
+    "caption": "دو ویلا کنار دریا؛ چوب، سنگ و بام‌هایی با فرم آزاد.",
     "media": [
       {
-        "src": "/images/projects/ramsar-arbekeleh/01-sea.webp",
-        "caption": "طرح ویلاها رو به دریای خزر",
-        "type": "render",
-        "width": 1188,
-        "height": 783,
-        "sourceUrl": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/"
+        "src": "/images/projects/khaneh-darya-villas/01-wood-villa.webp",
+        "caption": "ویلای اول: روکش چوب، سنگ تیره و لبهٔ تاشدهٔ بام",
+        "type": "photo",
+        "width": 1080,
+        "height": 1058
       },
       {
-        "src": "/images/projects/ramsar-arbekeleh/02-hill.webp",
-        "caption": "جای‌گیری حجم‌ها روی شیب جنگلی",
-        "type": "render",
-        "width": 1188,
-        "height": 667,
-        "sourceUrl": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/"
+        "src": "/images/projects/khaneh-darya-villas/02-wood-villa-side.webp",
+        "caption": "ویلای اول از سوی دیگر، هنگام تکمیل محوطه",
+        "type": "construction",
+        "width": 640,
+        "height": 635
       },
       {
-        "src": "/images/projects/ramsar-arbekeleh/03-aerial.webp",
-        "caption": "بام‌های سبز، استخرها و منظرسازی در طرح",
-        "type": "render",
-        "width": 1188,
-        "height": 667,
-        "sourceUrl": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/"
+        "src": "/images/projects/khaneh-darya-villas/03-curved-roof-villa.webp",
+        "caption": "ویلای دوم: بام‌های خمیده و قاب‌های سنگی",
+        "type": "photo",
+        "width": 1080,
+        "height": 779
       }
     ],
-    "cover": "/images/projects/ramsar-arbekeleh/01-sea.webp"
+    "cover": "/images/projects/khaneh-darya-villas/01-wood-villa.webp"
+  },
+  {
+    "slug": "lavasan-etehad",
+    "name": "خانهٔ اتحاد",
+    "use": "بازسازی مسکونی",
+    "place": "لواسان، اتحاد",
+    "status": "بازسازی‌شده",
+    "summary": "بازسازی خانه‌ای یک‌طبقه در اتحاد لواسان. بام شیروانی و ایوان ستون‌دار قدیمی جای خود را به بامی تیره با لبهٔ باریک، نمای سفید، درِ چوبی و پله‌های سنگی کنار جوی آب داده‌اند.",
+    "facts": [
+      [
+        "کاربری",
+        "خانهٔ یک‌طبقه"
+      ],
+      [
+        "کار",
+        "بازسازی"
+      ],
+      [
+        "موقعیت",
+        "لواسان، اتحاد"
+      ]
+    ],
+    "caption": "خانه‌ای یک‌طبقه، از نو؛ سنگ، چوب و آب در ورودی.",
+    "media": [
+      {
+        "src": "/images/projects/lavasan-etehad/01-after.webp",
+        "caption": "خانه پس از بازسازی؛ پله‌های سنگی و جوی آب",
+        "type": "photo",
+        "width": 886,
+        "height": 482
+      },
+      {
+        "src": "/images/projects/lavasan-etehad/02-before.webp",
+        "caption": "خانه پیش از بازسازی",
+        "type": "photo",
+        "width": 1080,
+        "height": 289
+      },
+      {
+        "src": "/images/projects/lavasan-etehad/03-design.webp",
+        "caption": "طرح بازسازی",
+        "type": "render",
+        "width": 1080,
+        "height": 436
+      }
+    ],
+    "cover": "/images/projects/lavasan-etehad/01-after.webp",
+    "instagram": {
+      "url": "https://www.instagram.com/stories/highlights/18085689931058293/",
+      "additional": []
+    }
   },
   {
     "slug": "shemshak-studio",
@@ -481,6 +440,277 @@
       }
     ],
     "cover": "/images/projects/sohrevardi-office/01-lobby.webp"
+  },
+  {
+    "slug": "kiminnotech",
+    "name": "کیمینوتک",
+    "use": "مرکز پژوهش و نوآوری",
+    "place": "پارک فناوری پردیس، فاز ۳",
+    "status": "در مرحلهٔ طراحی و ساخت",
+    "summary": "مرکز پژوهش و نوآوری کیمیا سرام زرین در پارک فناوری پردیس: آزمایشگاه، پیوند دانشگاه و صنعت، سالن همایش و نمایشگاه، و تولید مواد کم‌حجم و پرارزش.",
+    "facts": [
+      [
+        "کاربری",
+        "آزمایشگاه، تحقیق، همایش و نمایشگاه، تولید ویژه"
+      ],
+      [
+        "زمین",
+        "۱٬۶۳۴ مترمربع"
+      ],
+      [
+        "طبقات",
+        "۸ طبقه در طرح"
+      ],
+      [
+        "موقعیت",
+        "پارک فناوری پردیس، فاز ۳، خیابان کارآفرینی، قطعهٔ ۲۹۲"
+      ],
+      [
+        "وضعیت",
+        "در مرحلهٔ طراحی و ساخت؛ مشخصات ممکن است تغییر کند"
+      ]
+    ],
+    "instagram": {
+      "url": "https://www.instagram.com/zaronegroup/p/C29JyqXtDhV/",
+      "locationLabel": "پارک فناوری پردیس",
+      "locationUrl": "https://www.instagram.com/explore/locations/2086909034954089/pardis-technology-park/",
+      "additional": [
+        {
+          "url": "https://www.instagram.com/arventa.studio/reel/Ddwkhx1yljA/",
+          "label": "ارائهٔ معماری استودیو ARV"
+        }
+      ]
+    },
+    "caption": "مرکز پژوهش و نوآوری کیمیا سرام زرین در پارک فناوری پردیس.",
+    "media": [
+      {
+        "src": "/images/projects/kiminnotech/01-render.webp",
+        "caption": "تصویرسازی مرکز پژوهش و نوآوری",
+        "type": "render",
+        "width": 1188,
+        "height": 663,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/C29JyqXtDhV/"
+      },
+      {
+        "src": "/images/projects/kiminnotech/02-arv-presentation.webp",
+        "caption": "ارائهٔ معماری منتشرشده توسط استودیو ARV",
+        "type": "render",
+        "width": 360,
+        "height": 640,
+        "sourceUrl": "https://www.instagram.com/arventa.studio/reel/Ddwkhx1yljA/",
+        "credit": "ARV Studio — Architecture & BIM"
+      },
+      {
+        "src": "/images/projects/kiminnotech/03-site-excavation.webp",
+        "caption": "گود و دیوار مهارشده",
+        "type": "construction",
+        "width": 720,
+        "height": 1280
+      },
+      {
+        "src": "/images/projects/kiminnotech/04-site-frame.webp",
+        "caption": "اجرای ستون‌ها و آرماتوربندی سقف",
+        "type": "construction",
+        "width": 1280,
+        "height": 960
+      }
+    ],
+    "cover": "/images/projects/kiminnotech/01-render.webp"
+  },
+  {
+    "slug": "fereshteh-58",
+    "name": "فرشته ۵۸",
+    "use": "اداری",
+    "place": "تهران، منطقهٔ ۱",
+    "status": "در حال طراحی",
+    "summary": "دو دیوار سنگی شیاردار و میانشان حجم‌های شیشه‌ای و باغ‌های معلق؛ ساختمان اداری روی زمینی به مساحت ۱٬۲۴۵٫۵ مترمربع در خیابان فرشته.",
+    "facts": [
+      [
+        "کاربری",
+        "اداری"
+      ],
+      [
+        "زیربنای ناخالص",
+        "حدود ۱۶٬۲۳۸ مترمربع در طرح"
+      ],
+      [
+        "طبقات",
+        "۷ زیرزمین، همکف و ۱۱ طبقه در طرح"
+      ],
+      [
+        "زمین",
+        "۱٬۲۴۵٫۵ مترمربع"
+      ],
+      [
+        "وضعیت",
+        "در حال طراحی؛ مشخصات ممکن است تغییر کند"
+      ]
+    ],
+    "caption": "حجم‌های شیشه‌ای و باغ‌های معلق، میان دو دیوار سنگی شیاردار.",
+    "media": [
+      {
+        "src": "/images/projects/fereshteh-58/02-from-street.webp",
+        "caption": "نمای طرح از خیابان",
+        "type": "render",
+        "width": 1218,
+        "height": 1400
+      },
+      {
+        "src": "/images/projects/fereshteh-58/01-elevation.webp",
+        "caption": "نمای اصلی و باغ‌های معلق",
+        "type": "render",
+        "width": 748,
+        "height": 1400
+      },
+      {
+        "src": "/images/projects/fereshteh-58/03-stone.webp",
+        "caption": "جزئیات دیوارهای سنگی",
+        "type": "render",
+        "width": 647,
+        "height": 1400
+      },
+      {
+        "src": "/images/projects/fereshteh-58/04-context.webp",
+        "caption": "جای‌گیری طرح در بافت پیرامون",
+        "type": "render",
+        "width": 640,
+        "height": 640
+      }
+    ],
+    "cover": "/images/projects/fereshteh-58/02-from-street.webp"
+  },
+  {
+    "slug": "lavasan-astalak",
+    "name": "ساختمان آستلک",
+    "use": "مسکونی",
+    "place": "لواسان، آستلک",
+    "status": "طرح",
+    "summary": "طرح ساختمانی مسکونی روی شیب سنگی آستلک. طبقه‌ها پله‌پله عقب می‌نشینند و هر کدام ایوانی با نردهٔ شیشه‌ای رو به منظر دارد؛ قاب‌های افقی سنگ تیره بر زمینه‌ای از سنگ روشن.",
+    "facts": [
+      [
+        "کاربری",
+        "مسکونی"
+      ],
+      [
+        "موقعیت",
+        "لواسان، آستلک"
+      ],
+      [
+        "وضعیت",
+        "طرح"
+      ]
+    ],
+    "caption": "طبقه‌هایی پله‌پله روی شیب، هر یک با ایوانی رو به منظر.",
+    "media": [
+      {
+        "src": "/images/projects/lavasan-astalak/01-render.webp",
+        "caption": "طبقه‌های پله‌پله و ایوان‌ها روی شیب سنگی",
+        "type": "render",
+        "width": 768,
+        "height": 1080
+      }
+    ],
+    "cover": "/images/projects/lavasan-astalak/01-render.webp",
+    "instagram": {
+      "url": "https://www.instagram.com/stories/highlights/17906457619333826/",
+      "additional": []
+    }
+  },
+  {
+    "slug": "mazandaran-villa",
+    "name": "ویلای مازندران",
+    "use": "ویلایی",
+    "place": "مازندران",
+    "status": "طرح؛ ساخته نشده",
+    "summary": "طرح ویلایی در مازندران: حجمی سفید که روی پایه‌های مورب، بالای دیوار بتنی با بافت قالب چوبی، معلق می‌ماند و با جدارهٔ شیشه‌ای رو به درختان باز می‌شود.",
+    "facts": [
+      [
+        "کاربری",
+        "ویلایی"
+      ],
+      [
+        "موقعیت",
+        "مازندران"
+      ],
+      [
+        "وضعیت",
+        "طرح معماری؛ ساخته نشده"
+      ]
+    ],
+    "caption": "حجمی سفید و معلق بر فراز دیوار بتنی، میان درختان.",
+    "media": [
+      {
+        "src": "/images/projects/mazandaran-villa/01-cantilever.webp",
+        "caption": "حجم معلق سفید بر فراز دیوار بتنی",
+        "type": "render",
+        "width": 1080,
+        "height": 607
+      },
+      {
+        "src": "/images/projects/mazandaran-villa/02-birches.webp",
+        "caption": "حجم معلق از میان درختان توس",
+        "type": "render",
+        "width": 1080,
+        "height": 607
+      }
+    ],
+    "cover": "/images/projects/mazandaran-villa/01-cantilever.webp"
+  },
+  {
+    "slug": "ramsar-arbekeleh",
+    "name": "ویلاهای اربکله",
+    "use": "ویلایی",
+    "place": "رامسر، اربکله",
+    "status": "طرح ۱۴۰۲",
+    "summary": "ویلاهایی روی شیب جنگلی اربکله، رو به دریای خزر؛ حجم‌های سفید با بام سبز، استخر و دیوارهای سنگی که با شیب زمین پایین می‌آیند.",
+    "facts": [
+      [
+        "کاربری",
+        "ویلایی"
+      ],
+      [
+        "موقعیت",
+        "رامسر، اربکله، رو به دریای خزر"
+      ],
+      [
+        "وضعیت",
+        "طرح معماری و منظرسازی، ۱۴۰۲"
+      ]
+    ],
+    "instagram": {
+      "url": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/",
+      "locationLabel": "رامسر، اربکله",
+      "locationUrl": "https://www.instagram.com/explore/locations/1733593196938839/_/",
+      "additional": []
+    },
+    "caption": "ویلاهایی روی شیب جنگلی اربکله، رو به دریای خزر.",
+    "media": [
+      {
+        "src": "/images/projects/ramsar-arbekeleh/01-sea.webp",
+        "caption": "طرح ویلاها رو به دریای خزر",
+        "type": "render",
+        "width": 1188,
+        "height": 783,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/"
+      },
+      {
+        "src": "/images/projects/ramsar-arbekeleh/02-hill.webp",
+        "caption": "جای‌گیری حجم‌ها روی شیب جنگلی",
+        "type": "render",
+        "width": 1188,
+        "height": 667,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/"
+      },
+      {
+        "src": "/images/projects/ramsar-arbekeleh/03-aerial.webp",
+        "caption": "بام‌های سبز، استخرها و منظرسازی در طرح",
+        "type": "render",
+        "width": 1188,
+        "height": 667,
+        "sourceUrl": "https://www.instagram.com/zaronegroup/p/Csjm8HLNAuK/"
+      }
+    ],
+    "cover": "/images/projects/ramsar-arbekeleh/01-sea.webp"
   },
   {
     "slug": "fresno-plaza",
