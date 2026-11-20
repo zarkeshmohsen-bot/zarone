@@ -65,6 +65,13 @@
         "height": 928
       },
       {
+        "src": "/images/projects/symphony-park-residence/09-tower-complete.webp",
+        "caption": "برج تکمیل‌شده؛ تراورتن و دیوار پردهٔ شیشه‌ای",
+        "type": "photo",
+        "width": 810,
+        "height": 1080
+      },
+      {
         "src": "/images/projects/symphony-park-residence/instagram-lobby-01.webp",
         "caption": "لابی و فضای انتظار",
         "type": "photo",
@@ -305,7 +312,14 @@
         "height": 1080
       },
       {
-        "src": "/images/projects/lavasan-estalak/06-render.webp",
+        "src": "/images/projects/lavasan-estalak/06-upper-alley.webp",
+        "caption": "از کوچهٔ بالا",
+        "type": "construction",
+        "width": 1080,
+        "height": 810
+      },
+      {
+        "src": "/images/projects/lavasan-estalak/07-render.webp",
         "caption": "طرح ساختمان",
         "type": "render",
         "width": 768,
@@ -411,6 +425,39 @@
       }
     ],
     "cover": "/images/projects/lavasan-etehad/01-after.webp"
+  },
+  {
+    "slug": "lavasan-villa-renovation",
+    "name": "ویلای لواسان",
+    "use": "بازسازی ویلا",
+    "place": "لواسان",
+    "status": "بازسازی‌شده",
+    "summary": "بازسازی ویلایی در لواسان. دو حجم سنگی ورودی را قاب می‌گیرند و درِ چوبی بلند میانشان می‌نشیند؛ پیش رو، حوضی گرد از سنگ تیره با نیلوفرهای آبی، درختان زیتون و کف‌سازی سنگی.",
+    "facts": [
+      [
+        "کاربری",
+        "ویلا"
+      ],
+      [
+        "کار",
+        "بازسازی"
+      ],
+      [
+        "موقعیت",
+        "لواسان"
+      ]
+    ],
+    "caption": "سنگ، چوب و آب؛ ورودی‌ای میان دو حجم سنگی.",
+    "media": [
+      {
+        "src": "/images/projects/lavasan-villa-renovation/01-entrance.webp",
+        "caption": "ورودی سنگی، درِ چوبی و حوض نیلوفر",
+        "type": "photo",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "cover": "/images/projects/lavasan-villa-renovation/01-entrance.webp"
   },
   {
     "slug": "shemshak-studio",
