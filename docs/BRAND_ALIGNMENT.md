@@ -4,7 +4,37 @@
 
 `content/brand.json` is the single source for Zarone's palette, locally hosted Vazirmatn face and original logo path. `build.mjs` emits `dist/brand.css`. All three retained palette variants use Vazirmatn for headings, body copy, numerals and the Latin wordmark; no other font face is loaded. Logos are confined to the header/footer and remain replaceable from that single path.
 
-The main palette matches Sazban's public website: navy `#0b1f3a`, deep navy `#071428`, paper `#f7f5f0`, a muted brass rule `#b08d57` and darker accent ink. Do not copy the older orange app tokens in `brand/tokens.json` over the current public-site palette. KCZ's public source uses Vazirmatn, image-led dark sections, restrained accents and clean information hierarchy. Zarone shares those conventions while preserving its architectural identity and project photography.
+Zarone's palette is its own (LOOK2, owner 2026-11-20: «similar format and design and fonts but different coloring»). Sazban's navy, ivory and brass are not used. Light grounds are warm stone `#f3efe8` and travertine `#e7dfd2` with a card `#fbf9f5`; dark bands are espresso `#2c241f` and the header/footer espresso-deep `#1c1714`; bronze `#96703f` carries rules and icon rings, bronze-ink `#7a5634` accent text on light grounds, bronze-light `#cfab7c` accent text on dark. The Instagram orange `#ef4123` appears only in the N of the mark and wordmark (owner asked the N to match it) and nowhere else. Format, Vazirmatn type scale, eyebrow-with-rule, section rhythm and the heritage band follow Sazban's site; colour, icons and arrangement are Zarone's. KCZ's public source uses Vazirmatn, image-led dark sections, restrained accents and clean information hierarchy; Zarone shares those conventions while preserving its architectural identity and project photography.
+
+### Contrast (WCAG 2.1, checked 2026-11-20 from `content/brand.json`)
+
+| Foreground | Background | Use | Ratio | Minimum |
+|---|---|---|---|---|
+| `ink` `#2a231e` | `stone` `#f3efe8` | body text | 13.50:1 | 4.5:1 |
+| `ink` `#2a231e` | `travertine` `#e7dfd2` | body text | 11.70:1 | 4.5:1 |
+| `ink` `#2a231e` | `card` `#fbf9f5` | body text | 14.71:1 | 4.5:1 |
+| `muted` `#62574d` | `stone` `#f3efe8` | secondary text | 6.13:1 | 4.5:1 |
+| `muted` `#62574d` | `travertine` `#e7dfd2` | secondary text | 5.31:1 | 4.5:1 |
+| `muted` `#62574d` | `card` `#fbf9f5` | secondary text | 6.68:1 | 4.5:1 |
+| `bronze-ink` `#7a5634` | `stone` `#f3efe8` | eyebrows, numbers, links | 5.71:1 | 4.5:1 |
+| `bronze-ink` `#7a5634` | `travertine` `#e7dfd2` | eyebrows, numbers, icons | 4.95:1 | 4.5:1 |
+| `bronze-ink` `#7a5634` | `card` `#fbf9f5` | eyebrows, numbers | 6.22:1 | 4.5:1 |
+| `bronze` `#96703f` | `stone` `#f3efe8` | rules and icon rings (non-text) | 3.91:1 | 3:1 |
+| `bronze` `#96703f` | `travertine` `#e7dfd2` | rules and icon rings (non-text) | 3.39:1 | 3:1 |
+| `on-dark` `#f3ede4` | `espresso` `#2c241f` | text on dark bands | 13.08:1 | 4.5:1 |
+| `on-dark` `#f3ede4` | `espresso-deep` `#1c1714` | text on header and footer | 15.27:1 | 4.5:1 |
+| `on-dark-muted` `#c2b6a8` | `espresso` `#2c241f` | secondary text on dark | 7.65:1 | 4.5:1 |
+| `on-dark-muted` `#c2b6a8` | `espresso-deep` `#1c1714` | secondary text on dark | 8.93:1 | 4.5:1 |
+| `bronze-light` `#cfab7c` | `espresso` `#2c241f` | eyebrows and icons on dark | 7.08:1 | 4.5:1 |
+| `bronze-light` `#cfab7c` | `espresso-deep` `#1c1714` | eyebrows and icons on dark | 8.26:1 | 4.5:1 |
+| `ink` `#2a231e` | `on-dark` `#f3ede4` | button text (light button on dark) | 13.29:1 | 4.5:1 |
+| `mark-orange` `#ef4123` | `espresso-deep` `#1c1714` | the N of the mark (graphic) | 4.61:1 | 3:1 |
+
+`bronze` is never used for text; text in bronze uses `bronze-ink` (light) or `bronze-light` (dark).
+
+### Icons
+
+Zarone's line icons are drawn for it in `build.mjs` (`ICON_PATHS`): 24 × 24, 1.5 px stroke, round caps and joins, `currentColor`, inline SVG, no library or external request — design and architecture, ground-up construction, مشارکت در ساخت, investment, renovation, phone, mobile, WhatsApp, Instagram, address, arrow and menu. Sheet: `docs/runs/ZARONE-LOOK2/icons.png`. The renovation icon is drawn but not yet on screen: `content/site.json` has no renovation service line, and adding one is new copy for the owner.
 
 Only Zarone is changed by this PR; the Sazban application and the KCZ website are reference sources.
 
