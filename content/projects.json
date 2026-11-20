@@ -223,14 +223,21 @@
         "height": 1080
       },
       {
-        "src": "/images/projects/zafaranieh/02-ramp.webp",
+        "src": "/images/projects/zafaranieh/02-aerial.webp",
+        "caption": "پنج طبقه و رمپ ورودی، از بالا",
+        "type": "photo",
+        "width": 809,
+        "height": 1080
+      },
+      {
+        "src": "/images/projects/zafaranieh/03-ramp.webp",
         "caption": "رمپ سرپوشیده و دیوارهٔ فلزی سفید",
         "type": "photo",
         "width": 1080,
         "height": 810
       },
       {
-        "src": "/images/projects/zafaranieh/03-gate.webp",
+        "src": "/images/projects/zafaranieh/04-gate.webp",
         "caption": "درِ ورودی و نمای ساختمان از خیابان",
         "type": "photo",
         "width": 810,
@@ -238,6 +245,74 @@
       }
     ],
     "cover": "/images/projects/zafaranieh/01-facade.webp"
+  },
+  {
+    "slug": "lavasan-estalak",
+    "name": "ساختمان استلک",
+    "use": "مسکونی، چندواحدی",
+    "place": "لواسان، استلک",
+    "status": "ساخته‌شده",
+    "summary": "ساختمانی مسکونی و چندواحدی روی دامنهٔ لواسان. حجم‌هایی با قاب سنگی پله‌پله روی هم می‌نشینند، میانشان صفحه‌های سفید، و پنجره‌های سرتاسری رو به کوه باز می‌شوند.",
+    "facts": [
+      [
+        "کاربری",
+        "مسکونی، چندواحدی"
+      ],
+      [
+        "موقعیت",
+        "لواسان، استلک"
+      ],
+      [
+        "وضعیت",
+        "ساخته‌شده"
+      ]
+    ],
+    "caption": "حجم‌های سنگی پله‌پله و پنجره‌های سرتاسری، رو به کوه.",
+    "media": [
+      {
+        "src": "/images/projects/lavasan-estalak/01-from-road.webp",
+        "caption": "قاب‌های سنگی و صفحه‌های سفید، از جادهٔ پایین دامنه",
+        "type": "photo",
+        "width": 810,
+        "height": 1080
+      },
+      {
+        "src": "/images/projects/lavasan-estalak/02-front.webp",
+        "caption": "نمای روبه‌رو، نزدیک به پایان کار",
+        "type": "construction",
+        "width": 810,
+        "height": 1080
+      },
+      {
+        "src": "/images/projects/lavasan-estalak/03-hillside.webp",
+        "caption": "ساختمان بر دامنه، با کوه در پس‌زمینه",
+        "type": "photo",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/images/projects/lavasan-estalak/04-finishing.webp",
+        "caption": "نمای روبه‌رو، هنگام کارهای پایانی",
+        "type": "construction",
+        "width": 810,
+        "height": 1080
+      },
+      {
+        "src": "/images/projects/lavasan-estalak/05-frame.webp",
+        "caption": "اسکلت و داربست",
+        "type": "construction",
+        "width": 810,
+        "height": 1080
+      },
+      {
+        "src": "/images/projects/lavasan-estalak/06-render.webp",
+        "caption": "طرح ساختمان",
+        "type": "render",
+        "width": 768,
+        "height": 1080
+      }
+    ],
+    "cover": "/images/projects/lavasan-estalak/01-from-road.webp"
   },
   {
     "slug": "khaneh-darya-villas",
@@ -335,11 +410,7 @@
         "height": 436
       }
     ],
-    "cover": "/images/projects/lavasan-etehad/01-after.webp",
-    "instagram": {
-      "url": "https://www.instagram.com/stories/highlights/18085689931058293/",
-      "additional": []
-    }
+    "cover": "/images/projects/lavasan-etehad/01-after.webp"
   },
   {
     "slug": "shemshak-studio",
@@ -578,43 +649,6 @@
       }
     ],
     "cover": "/images/projects/fereshteh-58/02-from-street.webp"
-  },
-  {
-    "slug": "lavasan-astalak",
-    "name": "ساختمان آستلک",
-    "use": "مسکونی",
-    "place": "لواسان، آستلک",
-    "status": "طرح",
-    "summary": "طرح ساختمانی مسکونی روی شیب سنگی آستلک. طبقه‌ها پله‌پله عقب می‌نشینند و هر کدام ایوانی با نردهٔ شیشه‌ای رو به منظر دارد؛ قاب‌های افقی سنگ تیره بر زمینه‌ای از سنگ روشن.",
-    "facts": [
-      [
-        "کاربری",
-        "مسکونی"
-      ],
-      [
-        "موقعیت",
-        "لواسان، آستلک"
-      ],
-      [
-        "وضعیت",
-        "طرح"
-      ]
-    ],
-    "caption": "طبقه‌هایی پله‌پله روی شیب، هر یک با ایوانی رو به منظر.",
-    "media": [
-      {
-        "src": "/images/projects/lavasan-astalak/01-render.webp",
-        "caption": "طبقه‌های پله‌پله و ایوان‌ها روی شیب سنگی",
-        "type": "render",
-        "width": 768,
-        "height": 1080
-      }
-    ],
-    "cover": "/images/projects/lavasan-astalak/01-render.webp",
-    "instagram": {
-      "url": "https://www.instagram.com/stories/highlights/17906457619333826/",
-      "additional": []
-    }
   },
   {
     "slug": "mazandaran-villa",
