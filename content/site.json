@@ -3,10 +3,10 @@
   "wordmark": "زروان",
   "wordmarkLatin": "ZARONE",
   "nameEn": "ZarOne Development Group",
-  "domain": "zarone.ir",
+  "domain": "zaronegroup.com",
   "city": "تهران",
   "descriptor": "گروهی از متخصصان معماری، مهندسی، ساخت و توسعهٔ املاک",
-  "sitePublic": false,
+  "sitePublic": true,
   "holding": {
     "line": "ساختن، فراتر از معمول.",
     "text": "تارنمای تازهٔ زروان به‌زودی در همین نشانی است. تا آن روز، پروژه‌ها را در اینستاگرام ببینید یا با دفتر زروان تماس بگیرید."
