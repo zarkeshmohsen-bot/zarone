@@ -364,3 +364,18 @@ h2,.section-head h2{font-size:28px;line-height:1.6;font-weight:700}
 }
 .about-hero-grid{grid-template-columns:.85fr 1.15fr}.about-hero .about-photo{aspect-ratio:4/3}
 @media(max-width:680px){.about-hero-grid{grid-template-columns:1fr}}
+
+/* ───────── ZARONE-COPY1 (owner, 2026-11-20): legibility floor, line length and one spacing rhythm. ─────────
+   No visible text below 12 px; long paragraphs held to about 70 characters a line; every full band 112 px desktop, 64 px phone. */
+.project-status,.media-kind,.image-note,.hero-bottom,.hero-bottom .heritage-hint,.highlight-links .eyebrow,.highlight-action,.footer-since,.footer-bottom,.about-hero figcaption,.letterhead figcaption,.diptych-grid figcaption,.field-grid .eyebrow,.contact-photo figcaption,.gallery-figure figcaption small,.media-credit{font-size:12px}
+.image-note,.about-hero figcaption,.diptych-grid figcaption,.contact-photo figcaption{font-size:13px}
+.hero-bottom .heritage-hint{font-size:13px}
+.heritage-text>p,.story-copy>p:not(.eyebrow),.sazban-story .lead,.about-hero .lead,.family-heading .lead,.project-summary .lead{max-width:30em}
+.heritage-section,.family-fields,.sazban-story,.heritage-diptych{padding-block:112px}
+@media(max-width:680px){
+ .hero .eyebrow{font-size:13px}
+ .hero-photo figcaption,.project-card>p,.card-description,.portfolio-intro,.gallery-figure figcaption,.project-cover figcaption,.real-work figcaption,.heritage-timeline li>span{font-size:12px}
+ .heritage-timeline li>p,.facts>div{font-size:13px}
+ .heritage-section,.family-fields,.sazban-story,.heritage-diptych{padding-block:64px}
+}
+.hero-description{max-width:460px}

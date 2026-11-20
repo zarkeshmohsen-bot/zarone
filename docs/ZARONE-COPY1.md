@@ -57,3 +57,13 @@ Task-ID: ZARONE-COPY1 · Agent-Owner: Claude · Branch: `claude/ZARONE-LOOK2` (P
 with zero console errors in `docs/runs/ZARONE-COPY1/` (full page, plus the home first screen at each width);
 before/after list in `docs/runs/ZARONE-COPY1/copy-changes.md`; PR body `## Handoff` updated. Owner's yes on the
 pictures before merge; public copy is an owner gate.
+
+## Result (2026-11-20)
+- Every page at 390×844 and 1366×860: one h1, no horizontal overflow, zero console errors, zero failed requests,
+  every image loaded (Playwright, `docs/runs/ZARONE-COPY1/`). No photo was missing on Zarone before or after.
+- Audit after the change: no text below 12 px; no body/caption contrast pair under 4.5:1 (3:1 large) on solid grounds;
+  no control under 44 px outside running text; no Latin outside `bdi`/`dir`; long paragraphs 55–66 characters a line at
+  1366, 38–55 at 390. Text over photographs (hero and gallery captions) sits on its own dark panel.
+- `node build.mjs`, `node scripts/check-site.mjs` and `scripts/navigation.mjs` (320/390/768/1366, three variants) pass.
+- No «اولین», «هوش مصنوعی», «!» in content; «بهترین» only in the owner's saying (D5); «ساختن» no longer appears in content.
+- Not done here: the Sazban hero photo and signature (requests 1–2) — see the finding above and the PR hand-off.
