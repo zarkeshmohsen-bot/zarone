@@ -4,7 +4,7 @@
 
 `content/brand.json` is the single source for Zarone's palette, locally hosted Vazirmatn face and original logo path. `build.mjs` emits `dist/brand.css`. All three retained palette variants use Vazirmatn for headings, body copy, numerals and the Latin wordmark; no other font face is loaded. Logos are confined to the header/footer and remain replaceable from that single path.
 
-Zarone's palette is its own (LOOK2, owner 2026-11-20: «similar format and design and fonts but different coloring»). Sazban's navy, ivory and brass are not used. Light grounds are warm stone `#f3efe8` and travertine `#e7dfd2` with a card `#fbf9f5`; dark bands are espresso `#2c241f` and the header/footer espresso-deep `#1c1714`; bronze `#96703f` carries rules and icon rings, bronze-ink `#7a5634` accent text on light grounds, bronze-light `#cfab7c` accent text on dark. The Instagram orange `#ef4123` appears only in the N of the mark and wordmark (owner asked the N to match it) and nowhere else. Format, Vazirmatn type scale, eyebrow-with-rule, section rhythm and the heritage band follow Sazban's site; colour, icons and arrangement are Zarone's. KCZ's public source uses Vazirmatn, image-led dark sections, restrained accents and clean information hierarchy; Zarone shares those conventions while preserving its architectural identity and project photography.
+Zarone's palette is its own (LOOK2, owner 2026-11-20: «similar format and design and fonts but different coloring»). Sazban's navy, ivory and brass are not used. Light grounds are warm stone `#f3efe8` and travertine `#e7dfd2` with a card `#fbf9f5`; dark bands are espresso `#2c241f` and the header/footer espresso-deep `#1c1714`; bronze `#96703f` carries rules and icon rings, bronze-ink `#7a5634` accent text on light grounds, bronze-light `#cfab7c` accent text on dark. The logo is the owner's chosen ZA mark (ZARONE-LOGO-ZA, 2026-11-21): the designer's 2026-11-17 geometry, Z and block black `#000000` (white on dark grounds), the A-stroke gold `#d3a73e`; the gold appears only in that stroke. The earlier ZN/portal mark and orange `#ef4123` are retired. Format, Vazirmatn type scale, eyebrow-with-rule, section rhythm and the heritage band follow Sazban's site; colour, icons and arrangement are Zarone's. KCZ's public source uses Vazirmatn, image-led dark sections, restrained accents and clean information hierarchy; Zarone shares those conventions while preserving its architectural identity and project photography.
 
 ### Contrast (WCAG 2.1, checked 2026-11-20 from `content/brand.json`)
 
@@ -28,7 +28,12 @@ Zarone's palette is its own (LOOK2, owner 2026-11-20: «similar format and desig
 | `bronze-light` `#cfab7c` | `espresso` `#2c241f` | eyebrows and icons on dark | 7.08:1 | 4.5:1 |
 | `bronze-light` `#cfab7c` | `espresso-deep` `#1c1714` | eyebrows and icons on dark | 8.26:1 | 4.5:1 |
 | `ink` `#2a231e` | `on-dark` `#f3ede4` | button text (light button on dark) | 13.29:1 | 4.5:1 |
-| `mark-orange` `#ef4123` | `espresso-deep` `#1c1714` | the N of the mark (graphic) | 4.61:1 | 3:1 |
+| `mark-gold` `#d3a73e` | `espresso-deep` `#1c1714` | the A-stroke of the ZA mark in header and footer (graphic) | 7.92:1 | 3:1 |
+| `mark-gold` `#d3a73e` | white `#ffffff` | the A-stroke on the favicon tile and light-ground files | 2.24:1 | logo, exempt |
+| `mark-gold` `#d3a73e` | `stone` `#f3efe8` | the A-stroke if the on-light mark sits on stone | 1.96:1 | logo, exempt |
+| `mark-gold` `#d3a73e` | `travertine` `#e7dfd2` | the A-stroke if the on-light mark sits on travertine | 1.70:1 | logo, exempt |
+
+The gold slash is weak in tone on light grounds (below 3:1); it reads by its size. The site shows the mark on light ground only on the holding page (not built while `sitePublic` is true) and in the favicon tile.
 
 `bronze` is never used for text; text in bronze uses `bronze-ink` (light) or `bronze-light` (dark).
 
