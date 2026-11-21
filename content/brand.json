@@ -18,10 +18,41 @@
     "bronze": "#96703f",
     "bronze-ink": "#7a5634",
     "bronze-light": "#cfab7c",
-    "mark-orange": "#ef4123"
+    "mark-gold": "#d3a73e",
+    "mark-black": "#000000"
   },
   "logo": "/images/brand/zarone-mark.svg",
+  "logoOnLight": "/images/brand/zarone-mark-on-light.svg",
   "logoType": "image/svg+xml",
   "wordmark": "/images/brand/zarone-wordmark-light.svg",
-  "wordmarkOnLight": "/images/brand/zarone-wordmark-dark.svg"
+  "wordmarkOnLight": "/images/brand/zarone-wordmark-dark.svg",
+  "favicon": "/images/brand/favicon.svg",
+  "faviconIco": "/favicon.ico",
+  "appleTouchIcon": "/images/brand/apple-touch-icon.png",
+  "icons": [
+    {
+      "src": "/images/brand/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/brand/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/brand/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/brand/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "schemaLogo": "/images/brand/icon-512.png",
+  "ogImage": "/images/brand/zarone-og.png"
 }

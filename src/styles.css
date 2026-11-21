@@ -176,7 +176,7 @@ h2{font-size:clamp(28px,3vw,40px);line-height:1.65}
 .project-search button:focus-visible { outline: 2px solid var(--navy); outline-offset: -3px; }
 [data-project-count], [data-project-empty] { margin-block: .5rem 1rem; color: var(--muted); font-size: .9rem; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-/* Navy header: the menu trigger and panel keep contrast; new mark and Latin wordmark (owner's 2026-11-15 design). */
+/* Navy header: the menu trigger and panel keep contrast; ZA mark and Latin wordmark (owner's choice, 2026-11-21). */
 .top .mobile-navigation summary{color:var(--on-navy);min-width:44px;min-height:44px}
 .top .mobile-navigation[open] summary{background:#ffffff1a}
 .top .mobile-navigation nav{background:var(--navy);border:1px solid #ffffff26;flex-direction:column;gap:0}
@@ -192,8 +192,8 @@ h2{font-size:clamp(28px,3vw,40px);line-height:1.65}
 @media(max-width:680px){.real-work{padding-block:0 55px}.real-work-grid{gap:12px}.real-work figcaption{font-size:11px}}
 
 /* ───────── LOOK2 (owner, 2026-11-20): Sazban's format and type, Zarone's colour, icons and arrangement. ─────────
-   Palette from content/brand.json: stone and travertine grounds, espresso dark bands, bronze rules; the orange lives
-   only in the N of the mark. Type follows Sazban's site scale (site-h1 / site-h2 / site-lead / site-eyebrow). */
+   Palette from content/brand.json: stone and travertine grounds, espresso dark bands, bronze rules; the gold lives
+   only in the A-stroke of the ZA mark (ZARONE-LOGO-ZA, 2026-11-21). Type follows Sazban's site scale (site-h1 / site-h2 / site-lead / site-eyebrow). */
 body{background:var(--travertine);font-size:15px}
 h1,h2,h3{font-weight:700}
 h1{font-size:36px;line-height:1.45}
@@ -379,3 +379,6 @@ h2,.section-head h2{font-size:28px;line-height:1.6;font-weight:700}
  .heritage-section,.family-fields,.sazban-story,.heritage-diptych{padding-block:64px}
 }
 .hero-description{max-width:460px}
+/* ZARONE-LOGO-ZA (owner, 2026-11-21): the ZA mark is wider than tall (297:204) and stands without a circle. */
+.identity>img{border-radius:0;width:auto;height:36px}
+@media(max-width:680px){.identity>img{height:30px}}
